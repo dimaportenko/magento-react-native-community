@@ -20,7 +20,7 @@ const RootStack = () => (
   </Stack.Navigator>
 );
 
-export default function App() {
+export const Navigation = () => {
   return (
     <NavigationContainer>
       <RootStack />
