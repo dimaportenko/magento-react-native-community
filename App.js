@@ -11,15 +11,11 @@ import SplashScreen from 'react-native-splash-screen';
 import { Navigation } from './src/navigation/Navigation';
 
 const App: () => React$Node = () => {
-
   useEffect(() => {
     SplashScreen.hide();
   }, []);
 
-  return (
-    <Navigation />
-  );
+  return <Navigation />;
 };
-
 
 export default App;
