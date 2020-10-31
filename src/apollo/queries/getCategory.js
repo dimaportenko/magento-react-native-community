@@ -18,3 +18,19 @@ export const GET_CATEGORIES = gql`
     }
   }
 `;
+
+export type CategoryType = {|
+  id: number,
+  name: string,
+  product_count: number,
+  children_count: number,
+|};
+
+export type CategoryListNodeType = {|
+  id: number,
+  children: Array<CategoryType>,
+|};
+
+export type CategoryListType = {|
+  categoryList: Array<CategoryListNodeType>,
+|};

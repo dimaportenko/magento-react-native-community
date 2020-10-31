@@ -11,11 +11,18 @@ import * as routes from './routes';
 const Stack = createStackNavigator();
 
 const RootStack = () => (
-  <Stack.Navigator>
+  <Stack.Navigator
+    screenOptions={({ navigation, route }) => ({
+      headerBackTitleVisible: false,
+      title: route?.params?.title,
+    })}
+  >
     <Stack.Screen
       name={routes.NAVIGATION_CATEGORIES_ROUTE}
       component={CategoriesScreen}
-      options={{ title: 'Categories' }}
+      options={({ navigation, route }) => ({
+        title: route?.params?.title ?? 'Categories',
+      })}
     />
   </Stack.Navigator>
 );
