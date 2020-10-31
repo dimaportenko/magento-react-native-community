@@ -3,7 +3,7 @@
  * Created by Dima Portenko on 06.10.2020
  */
 import React, { useEffect } from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Text, View, Constants } from 'react-native-markup-kit';
 import { useCategories } from '../../logic/categories/useCategories';
 import type { CategoryType } from '../../apollo/queries/getCategory';
@@ -13,7 +13,7 @@ import * as routes from '../../navigation/routes';
 export const CategoriesScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { getCategories, categories } = useCategories({
+  const { getCategories, categories, loading } = useCategories({
     categoryId: route?.params?.categoryId ?? '2',
   });
 
@@ -57,6 +57,14 @@ export const CategoriesScreen = () => {
       </TouchableOpacity>
     );
   };
+
+  if (loading) {
+    return (
+      <View flex center>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
 
   return (
     <View flex>
