@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  * Created by Dima Portenko on 10.10.2020
  */
 
@@ -18,3 +18,19 @@ export const GET_CATEGORIES = gql`
     }
   }
 `;
+
+export type CategoryListType = {
+  categoryList: Array<CategoryListNodeType>,
+};
+
+export type CategoryListNodeType = {
+  id: number,
+  children: Array<CategoryType>,
+};
+
+export type CategoryType = {
+  id: number,
+  name: string,
+  product_count: number,
+  children_count: number,
+};
