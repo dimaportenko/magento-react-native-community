@@ -9,8 +9,11 @@ import { useCategories } from '../../logic/categories/useCategories';
 import type { CategoryType } from '../../apollo/queries/getCategory';
 import { useNavigation, useRoute } from '@react-navigation/core';
 import * as routes from '../../navigation/routes';
+import { CategoryListItem } from './CategoryListItem';
+import { useCategoryColors } from '../../logic/categories/useCategoryColors';
 
 export const CategoriesScreen = () => {
+  const { colorForIndex } = useCategoryColors();
   const route = useRoute();
   const navigation = useNavigation();
   const { getCategories, categories, loading } = useCategories({
@@ -37,14 +40,7 @@ export const CategoriesScreen = () => {
   }
 
   const renderItem = ({ item, index }: { item: CategoryType, index: number }) => {
-    const disabled = item.children_count < 1;
-    return (
-      <TouchableOpacity onPress={() => onCategoryItemPress(item)} disabled={disabled}>
-        <View center height={80} bg-grey50={!disabled} bg-grey40={disabled} marginH-15 marginB-15 br40>
-          <Text>{item.name}</Text>
-        </View>
-      </TouchableOpacity>
-    );
+    return <CategoryListItem item={item} onPress={onCategoryItemPress} index={index} color={colorForIndex(index)} />;
   };
 
   return (
