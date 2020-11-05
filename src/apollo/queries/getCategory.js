@@ -14,6 +14,14 @@ export const GET_CATEGORIES = gql`
         name
         product_count
         children_count
+        image
+        productImagePreview: products(pageSize: 1) {
+          items {
+            small_image {
+              url
+            }
+          }
+        }
       }
     }
   }
@@ -33,4 +41,14 @@ export type CategoryType = {
   name: string,
   product_count: number,
   children_count: number,
+  image: ?string,
+  productImagePreview: CategoryProductImagePreview,
+};
+
+export type CategoryProductImagePreview = {
+  items: Array<{
+    small_image: {
+      url: string,
+    },
+  }>,
 };
