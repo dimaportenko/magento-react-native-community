@@ -51,6 +51,7 @@ export const CategoriesScreen = () => {
         item={item}
         onPress={onCategoryItemPress}
         color={getCategoryColorByIndex(index)}
+        index={index}
       />
     );
   };
