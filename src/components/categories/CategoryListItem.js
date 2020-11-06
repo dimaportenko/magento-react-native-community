@@ -3,7 +3,22 @@
  * Created by Dima Portenko on 04.11.2020
  */
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, Image, StyleSheet } from 'react-native';
+import {
+  Platform,
+  Image,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  useDerivedValue,
+  withSpring,
+  withTiming,
+  Easing,
+  interpolate,
+  Extrapolate,
+} from 'react-native-reanimated';
 import { Text, View } from 'react-native-markup-kit';
 import type { CategoryType } from '../../apollo/queries/getCategory';
 
@@ -15,9 +30,46 @@ type Props = {
 };
 
 const ITEM_HEIGHT = 80;
+const timingConfig = { duration: 50, easing: Easing.linear };
 
 export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
   const [disabled] = useState(item.children_count < 1);
+  const pressed = useSharedValue(false);
+  const shown = useSharedValue(false);
+  const progress = useDerivedValue(() =>
+    pressed.value ? withTiming(1, timingConfig) : withTiming(0, timingConfig),
+  );
+
+  const appearance = useDerivedValue(() => (shown.value ? withSpring(1) : 0));
+
+  useEffect(() => {
+    shown.value = true;
+  }, []);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    const scale = interpolate(
+      progress.value,
+      [0, 1],
+      [1, 0.97],
+      Extrapolate.CLAMP,
+    );
+    const translateY = interpolate(
+      appearance.value,
+      [0, 1],
+      [50, 0],
+      Extrapolate.CLAMP,
+    );
+    const opacity = interpolate(
+      appearance.value,
+      [0, 1],
+      [0, 1],
+      Extrapolate.CLAMP,
+    );
+    return {
+      transform: [{ scale }, { translateY }],
+      opacity: Platform.select({ ios: opacity }),
+    };
+  });
 
   const renderText = () => (
     <View flex center>
@@ -59,19 +111,29 @@ export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
   };
 
   return (
-    <TouchableOpacity onPress={() => onPress(item)} disabled={disabled}>
-      <View
-        center
-        row
-        height={ITEM_HEIGHT}
-        backgroundColor={color}
-        marginH-15
-        marginB-15
-        shadow70
-        br40>
-        {renderContent()}
-      </View>
-    </TouchableOpacity>
+    <TouchableWithoutFeedback
+      disabled={disabled}
+      onPressIn={() => {
+        pressed.value = true;
+      }}
+      onPressOut={() => {
+        pressed.value = false;
+      }}
+      onPress={() => onPress(item)}>
+      <Animated.View style={animatedStyle}>
+        <View
+          center
+          row
+          height={ITEM_HEIGHT}
+          backgroundColor={color}
+          marginH-15
+          marginB-15
+          shadow70
+          br40>
+          {renderContent()}
+        </View>
+      </Animated.View>
+    </TouchableWithoutFeedback>
   );
 };
 
