@@ -67,7 +67,7 @@ export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
     );
     return {
       transform: [{ scale }, { translateY }],
-      opacity: Platform.select({ ios: opacity }),
+      opacity,
     };
   });
 
