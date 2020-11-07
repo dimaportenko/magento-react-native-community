@@ -7,6 +7,7 @@ import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native-markup-kit';
 import type { CategoryType } from '../../apollo/queries/getCategory';
 import { TouchableScale } from '../common/TouchableScale';
+import { AnimatedAppearance } from '../common/AnimatedAppearance';
 
 type Props = {
   item: CategoryType,
@@ -60,22 +61,24 @@ export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
   };
 
   return (
-    <TouchableScale
-      onPress={() => onPress(item)}
-      disabled={disabled}
-      scaleTo={0.97}>
-      <View
-        center
-        row
-        height={ITEM_HEIGHT}
-        backgroundColor={color}
-        marginH-15
-        marginB-15
-        shadow70
-        br40>
-        {renderContent()}
-      </View>
-    </TouchableScale>
+    <AnimatedAppearance index={index}>
+      <TouchableScale
+        onPress={() => onPress(item)}
+        disabled={disabled}
+        scaleTo={0.97}>
+        <View
+          center
+          row
+          height={ITEM_HEIGHT}
+          backgroundColor={color}
+          marginH-15
+          marginB-15
+          shadow70
+          br40>
+          {renderContent()}
+        </View>
+      </TouchableScale>
+    </AnimatedAppearance>
   );
 };
 

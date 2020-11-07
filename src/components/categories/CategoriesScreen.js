@@ -57,8 +57,9 @@ export const CategoriesScreen = () => {
   };
 
   return (
-    <View flex paddingT-15>
+    <View flex>
       <FlatList
+        contentContainerStyle={{ paddingTop: 15 }}
         data={categories}
         keyExtractor={(item) => `categoryItem${item.id.toString()}`}
         renderItem={renderItem}
