@@ -19,7 +19,9 @@ type Props = {
 const ITEM_HEIGHT = 80;
 
 export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
-  const [disabled] = useState(item.children_count < 1);
+  const [disabled] = useState(
+    item.children_count < 1 && item.product_count < 1,
+  );
 
   const renderText = () => (
     <View flex center>

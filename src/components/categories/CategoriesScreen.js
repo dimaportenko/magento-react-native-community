@@ -25,10 +25,17 @@ export const CategoriesScreen = () => {
   }, [getCategories]);
 
   const onCategoryItemPress = (item: CategoryType) => {
-    navigation.push(routes.NAVIGATION_CATEGORIES_ROUTE, {
-      categoryId: item.id,
-      title: item.name,
-    });
+    if (item.children_count > 0) {
+      navigation.push(routes.NAVIGATION_CATEGORIES_ROUTE, {
+        categoryId: item.id,
+        title: item.name,
+      });
+    } else if (item.product_count > 0) {
+      navigation.push(routes.NAVIGATION_PRODUCTS_ROUTE, {
+        categoryId: item.id,
+        title: item.name,
+      });
+    }
   };
 
   if (loading) {
