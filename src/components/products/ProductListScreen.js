@@ -6,6 +6,9 @@ import React, { useEffect } from 'react';
 import { View, Text } from 'react-native-markup-kit';
 import { useCategoryProducts } from '../../logic/products/useCategoryProducts';
 import { useRoute } from '@react-navigation/core';
+import { ActivityIndicator, FlatList } from 'react-native';
+import type { ProductType } from '../../apollo/queries/getCategoryProducts';
+import { ProductListItem } from './ProductListItem';
 
 export const ProductListScreen = () => {
   const route = useRoute();
@@ -17,10 +20,27 @@ export const ProductListScreen = () => {
     getCategoryProducts();
   }, []);
 
+  if (loading) {
+    return (
+      <View flex center>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  const renderItem = ({ item, index }: { item: ProductType, index: number}) => (
+    <ProductListItem item={item} index={index} />
+  );
+
   return (
-    <View flex center>
-      <Text>Product Screen</Text>
-      <Text>{`Product count - ${products.length}`}</Text>
+    <View flex>
+      <FlatList
+        numColumns={2}
+        contentContainerStyle={{ paddingVertical: 8, marginHorizontal: 8 }}
+        data={products}
+        keyExtractor={(item) => `categoryItem${item.id.toString()}`}
+        renderItem={renderItem}
+      />
     </View>
   );
 };
