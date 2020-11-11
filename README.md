@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="http://troublediehard.github.io/"><img src="https://github.com/troublediehard/magento-react-native-community/blob/master/android/app/src/main/ic_launcher-web.png" alt="Magento React Native logo" width="200"></a>
+  <a href="http://troublediehard.github.io/"><img src="https://github.com/troublediehard/magento-react-native-community/blob/master/ios/MagentoReactNativeCommunity/Images.xcassets/splash.imageset/mrn-bold.png" alt="Magento React Native logo" width="200"></a>
   <br>
   Open source React Native mobile app for Magento 2
   <br>
