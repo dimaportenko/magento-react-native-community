@@ -3,7 +3,12 @@
  * Created by Dima Portenko on 06.10.2020
  */
 import React, { useEffect } from 'react';
-import { FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import {
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+  RefreshControl,
+} from 'react-native';
 import { Text, View } from 'react-native-markup-kit';
 import { useCategories } from '../../logic/categories/useCategories';
 import type { CategoryType } from '../../apollo/queries/getCategory';
@@ -38,14 +43,6 @@ export const CategoriesScreen = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <View flex center>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
-
   const renderItem = ({
     item,
     index,
@@ -70,6 +67,9 @@ export const CategoriesScreen = () => {
         data={categories}
         keyExtractor={(item) => `categoryItem${item.id.toString()}`}
         renderItem={renderItem}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={getCategories} />
+        }
       />
     </View>
   );

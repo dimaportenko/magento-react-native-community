@@ -22,7 +22,7 @@ export const useCategories = (props: Props): Result => {
   const [
     getCategories,
     { called, loading, data, error },
-  ] = useLazyQuery(GET_CATEGORIES, { variables: { id: props.categoryId } });
+  ] = useLazyQuery(GET_CATEGORIES, { variables: { id: props.categoryId }, fetchPolicy: 'no-cache' });
 
   useEffect(() => {
     if (data) {
