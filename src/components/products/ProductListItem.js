@@ -36,6 +36,9 @@ export const ProductListItem = ({ item, index }: Props) => {
           <Text center margin-5>
             {item.name}
           </Text>
+          <Text center marginB-5>
+            {`${item.price_range.minimum_price.final_price.currency} ${item.price_range.minimum_price.final_price.value}`}
+          </Text>
         </View>
       </TouchableScale>
     </AnimatedAppearance>
