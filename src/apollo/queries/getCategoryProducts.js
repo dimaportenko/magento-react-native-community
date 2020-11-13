@@ -12,6 +12,7 @@ export const GET_CATEGORY_PRODUCTS = gql`
       pageSize: $pageSize
       currentPage: $currentPage
     ) {
+      total_count
       items {
         id
         name
@@ -33,6 +34,7 @@ export const GET_CATEGORY_PRODUCTS = gql`
 
 export type GetCategoryProductsType = {
   products: {
+    total_count: number,
     items: Array<ProductType>,
   },
 };
