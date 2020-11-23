@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { CategoriesScreen } from '../components/categories/CategoriesScreen';
 import * as routes from './routes';
 import { ProductListScreen } from '../components/products/ProductListScreen';
+import { ProductDetailsScreen } from '../components/products/ProductDetailsScreen';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,13 @@ const RootStack = () => (
       component={ProductListScreen}
       options={({ navigation, route }) => ({
         title: route?.params?.title ?? 'Products',
+      })}
+    />
+    <Stack.Screen
+      name={routes.NAVIGATION_PRODUCT_DETAILS_ROUTE}
+      component={ProductDetailsScreen}
+      options={({ navigation, route }) => ({
+        title: route?.params?.title ?? 'Product Details',
       })}
     />
   </Stack.Navigator>

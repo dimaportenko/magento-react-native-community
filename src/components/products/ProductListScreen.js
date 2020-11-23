@@ -6,15 +6,29 @@ import React, { useEffect } from 'react';
 import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
 import { View, Text, Constants, Spacings } from 'react-native-markup-kit';
 import { useCategoryProducts } from '../../logic/products/useCategoryProducts';
-import { useRoute } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 import type { ProductType } from '../../apollo/queries/getCategoryProducts';
 import { ProductListItem } from './ProductListItem';
+import * as routes from '../../navigation/routes';
 
 export const ProductListScreen = () => {
   const route = useRoute();
-  const { loading, products, loadMore, refreshing, refresh } = useCategoryProducts({
+  const navigation = useNavigation();
+  const {
+    loading,
+    products,
+    loadMore,
+    refreshing,
+    refresh,
+  } = useCategoryProducts({
     categoryId: route?.params?.categoryId,
   });
+
+  const onProductItemPress = (item: ProductType) => {
+    navigation.push(routes.NAVIGATION_PRODUCT_DETAILS_ROUTE, {
+      title: item.name,
+    });
+  };
 
   const renderItem = ({
     item,
@@ -23,7 +37,9 @@ export const ProductListScreen = () => {
     item: ProductType,
     index: number,
   }) => {
-    return <ProductListItem item={item} index={index} />;
+    return (
+      <ProductListItem item={item} index={index} onPress={onProductItemPress} />
+    );
   };
 
   const footerComponent = () => {

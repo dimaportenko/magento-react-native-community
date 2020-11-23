@@ -12,14 +12,15 @@ import { AnimatedAppearance } from '../common/AnimatedAppearance';
 type Props = {
   item: ProductType,
   index: number,
+  onPress(item: ProductType): void,
 };
 
 const COLUMN_SIZE = Constants.screenWidth / 2 - Spacings.s2 * 3;
 
-export const ProductListItem = ({ item, index }: Props) => {
+export const ProductListItem = ({ item, index, onPress }: Props) => {
   return (
     <AnimatedAppearance index={index}>
-      <TouchableScale onPress={() => {}} scaleTo={0.97} disabled={false}>
+      <TouchableScale onPress={() => {onPress(item)}} scaleTo={0.97} disabled={false}>
         <View
           flex
           bg-white
