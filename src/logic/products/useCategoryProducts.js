@@ -34,7 +34,6 @@ export const useCategoryProducts = ({ categoryId }: Props): Result => {
     queryResponse,
   ] = useLazyQuery<GetCategoryProductsType>(GET_CATEGORY_PRODUCTS, {
     variables: { id: categoryId, pageSize: PAGE_SIZE, currentPage },
-    fetchPolicy: 'no-cache',
     onCompleted: (responseData) => {
       if (responseData?.products?.items && currentPage === 1) {
         setProducts(responseData?.products?.items);
@@ -53,7 +52,7 @@ export const useCategoryProducts = ({ categoryId }: Props): Result => {
     if (!loading) {
       getCategoryProducts();
     }
-  }, [currentPage, getCategoryProducts]);
+  }, [currentPage, getCategoryProducts]); // eslint-disable-line
 
   const refresh = () => {
     if (currentPage !== 1) {

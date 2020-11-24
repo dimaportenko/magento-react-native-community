@@ -1,0 +1,16 @@
+/**
+ * @flow
+ * Created by Dima Portenko on 24.11.2020
+ */
+import { gql } from '@apollo/client';
+
+export const MEDIA_GALLERY_FRAGMENT = gql`
+  fragment MediaGallery on ProductInterface {
+    media_gallery {
+      disabled
+      label
+      position
+      url
+    }
+  }
+`;

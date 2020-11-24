@@ -5,9 +5,13 @@
 import React, { useEffect } from 'react';
 import { View, Text } from 'react-native-markup-kit';
 import { useProductDetails } from '../../logic/products/useProductDetails';
+import { useRoute } from '@react-navigation/core';
 
 export const ProductDetailsScreen = () => {
-  const { getProductDetails, loading } = useProductDetails({});
+  const route = useRoute();
+  const { getProductDetails, loading } = useProductDetails({
+    sku: route?.params?.sku,
+  });
 
   useEffect(() => {
     getProductDetails();

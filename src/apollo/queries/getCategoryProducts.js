@@ -16,6 +16,7 @@ export const GET_CATEGORY_PRODUCTS = gql`
       items {
         id
         name
+        sku
         small_image {
           url
         }
@@ -42,6 +43,7 @@ export type GetCategoryProductsType = {
 export type ProductType = {
   id: number,
   name: string,
+  sku: string,
   small_image: {
     url: string,
   },

@@ -27,6 +27,7 @@ export const ProductListScreen = () => {
   const onProductItemPress = (item: ProductType) => {
     navigation.push(routes.NAVIGATION_PRODUCT_DETAILS_ROUTE, {
       title: item.name,
+      sku: item.sku,
     });
   };
 
