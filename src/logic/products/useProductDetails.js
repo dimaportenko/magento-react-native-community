@@ -2,9 +2,13 @@
  * @flow
  * Created by Dima Portenko on 23.11.2020
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { GET_PRODUCT_DETAILS } from '../../apollo/queries/getProductDetails';
+import type {
+  ProductDetailsResponseType,
+  ProductDetailsType,
+} from '../../apollo/queries/getProductDetails';
 
 type Props = {|
   sku: string,
@@ -13,18 +17,24 @@ type Props = {|
 type Result = {|
   getProductDetails: () => void,
   loading: boolean,
+  productData: ?ProductDetailsType,
 |};
 
 export const useProductDetails = ({ sku }: Props): Result => {
-  const [getProductDetailsQuery, responseObject] = useLazyQuery(
-    GET_PRODUCT_DETAILS,
-    {
-      variables: { sku },
-      onCompleted: (response) => {
-        console.log(response);
-      },
+  const [productData, setProductData] = useState<?ProductDetailsType>(null);
+  const [
+    getProductDetailsQuery,
+    responseObject,
+  ] = useLazyQuery<ProductDetailsResponseType>(GET_PRODUCT_DETAILS, {
+    variables: { sku },
+    // fetchPolicy: 'cache-and-network',
+    onCompleted: (response) => {
+      setProductData(response?.products?.items?.[0]);
     },
-  );
+    onError: (error) => { console.error(error)}
+  });
+
+  const { loading } = responseObject;
 
   const getProductDetails = () => {
     getProductDetailsQuery();
@@ -32,6 +42,7 @@ export const useProductDetails = ({ sku }: Props): Result => {
 
   return {
     getProductDetails,
-    loading: false,
+    loading,
+    productData,
   };
 };
