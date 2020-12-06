@@ -40,6 +40,15 @@ export type GetCategoryProductsType = {
   },
 };
 
+export type PriceRange = {|
+  minimum_price: {
+    final_price: {
+      currency: string,
+      value: number,
+    },
+  },
+|};
+
 export type ProductType = {
   id: number,
   name: string,
@@ -47,12 +56,5 @@ export type ProductType = {
   small_image: {
     url: string,
   },
-  price_range: {
-    minimum_price: {
-      final_price: {
-        currency: string,
-        value: number,
-      },
-    },
-  },
+  price_range: PriceRange,
 };

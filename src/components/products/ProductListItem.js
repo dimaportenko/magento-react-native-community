@@ -8,6 +8,7 @@ import { View, Text, Constants, Spacings } from 'react-native-markup-kit';
 import type { ProductType } from '../../apollo/queries/getCategoryProducts';
 import { TouchableScale } from '../common/TouchableScale';
 import { AnimatedAppearance } from '../common/AnimatedAppearance';
+import { priceStringFromPriceRange } from '../../logic/utils/price';
 
 type Props = {
   item: ProductType,
@@ -38,7 +39,7 @@ export const ProductListItem = ({ item, index, onPress }: Props) => {
             {item.name}
           </Text>
           <Text center marginB-5>
-            {`${item.price_range.minimum_price.final_price.currency} ${item.price_range.minimum_price.final_price.value}`}
+            {priceStringFromPriceRange(item.price_range)}
           </Text>
         </View>
       </TouchableScale>
