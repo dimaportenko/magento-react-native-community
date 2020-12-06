@@ -6,6 +6,7 @@
 import { gql } from '@apollo/client';
 import { MEDIA_GALLERY_FRAGMENT } from './mediaGalleryFragment';
 import type { MediaGalleryItemType } from './mediaGalleryFragment';
+import type { PriceRange } from './getCategoryProducts';
 
 export const GET_PRODUCT_DETAILS = gql`
   query GetProductDetails($sku: String!) {
@@ -14,6 +15,17 @@ export const GET_PRODUCT_DETAILS = gql`
         id
         sku
         name
+        description {
+          html
+        }
+        price_range {
+          minimum_price {
+            final_price {
+              currency
+              value
+            }
+          }
+        }
         ...MediaGallery
       }
       total_count
@@ -27,6 +39,10 @@ export type ProductDetailsType = {
   sku: string,
   name: string,
   media_gallery: Array<MediaGalleryItemType>,
+  price_range: PriceRange,
+  description: {
+    html: string,
+  },
 };
 
 export type ProductDetailsResponseType = {
