@@ -71,6 +71,7 @@ export const ProductDetailsScreen = () => {
           </Text>
         </View>
       </TouchableRipple>
+      <View absB width="100%" height={insets.bottom} bg-white />
     </View>
   );
 };
