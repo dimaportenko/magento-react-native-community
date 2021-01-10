@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react';
 import { ApolloError, useMutation } from '@apollo/client';
 import { CREATE_CART } from '../../apollo/mutations/createCart';
 import type { CreateCartResponseType } from '../../apollo/mutations/createCart';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCartId, setCartId } from '../../redux/cart';
 
 type Props = {||};
 
@@ -14,7 +16,8 @@ type Result = {|
 |};
 
 export const useCart = (): Result => {
-  const [cartId, setCartId] = useState(null);
+  const cartId = useSelector(getCartId);
+  const dispatch = useDispatch();
 
   const [fetchCartId] = useMutation(CREATE_CART);
 
@@ -28,7 +31,7 @@ export const useCart = (): Result => {
         errors: ApolloError[],
       } = await fetchCartId();
 
-      setCartId(data.cartId);
+      dispatch(setCartId(data.cartId));
     } catch (error) {
       console.log(error);
     }
