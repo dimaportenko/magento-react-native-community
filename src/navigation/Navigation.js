@@ -20,6 +20,7 @@ const RootStack = () => {
     <Stack.Navigator
       screenOptions={() => ({
         headerBackTitleVisible: false,
+        headerTintColor: 'black',
       })}>
       <Stack.Screen
         name={routes.NAVIGATION_CATEGORIES_ROUTE}

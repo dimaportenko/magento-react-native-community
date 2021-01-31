@@ -29,7 +29,7 @@ import {
 import Color from 'color';
 
 type RippleButtonProps = {
-  children: ReactElement<ViewProps>,
+  children: React$Node,
   color: string,
   rippleColor: string,
   onPress?: () => void,
