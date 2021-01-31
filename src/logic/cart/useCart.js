@@ -41,7 +41,7 @@ export const useCart = (): Result => {
     if (!cartId) {
       createCart();
     }
-  }, []);
+  }, []); // eslint-disable-line
 
   return {
     cartId,

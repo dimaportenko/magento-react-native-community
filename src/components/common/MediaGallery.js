@@ -9,21 +9,30 @@ import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFrag
 
 type Props = {
   items: Array<MediaGalleryItemType>,
-}
+};
 
 export const MediaGallery = ({ items }: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const renderItem = ({ item, index}: { item: MediaGalleryItemType, index: number }) => {
+  const renderItem = ({
+    item,
+    index,
+  }: {
+    item: MediaGalleryItemType,
+    index: number,
+  }) => {
     return (
       <View bg-white>
         <Image
           source={{ uri: item.url }}
-          style={{ width: Constants.screenWidth, height: Constants.screenWidth }}
+          style={{
+            width: Constants.screenWidth,
+            height: Constants.screenWidth,
+          }}
           resizeMode="contain"
         />
       </View>
-    )
+    );
   };
 
   const onMomentumScrollEnd = (event) => {

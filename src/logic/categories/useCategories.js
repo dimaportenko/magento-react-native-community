@@ -5,7 +5,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { GET_CATEGORIES } from '../../apollo/queries/getCategory';
-import type { CategoryListType, CategoryType } from '../../apollo/queries/getCategory';
+import type {
+  CategoryListType,
+  CategoryType,
+} from '../../apollo/queries/getCategory';
 
 type Props = {|
   categoryId: string,

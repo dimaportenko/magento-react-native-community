@@ -31,7 +31,7 @@ export const AnimatedAppearance = ({ children, index }: Props) => {
 
   useEffect(() => {
     play.value = true;
-  }, []);
+  }, []); // eslint-disable-line
 
   const animatedStyle = useAnimatedStyle(() => {
     const opacity = interpolate(progress.value, [0, 1], [0, 1]);

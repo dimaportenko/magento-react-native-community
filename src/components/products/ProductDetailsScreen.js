@@ -23,7 +23,7 @@ export const ProductDetailsScreen = () => {
 
   useEffect(() => {
     getProductDetails();
-  }, []);
+  }, []); // eslint-disable-line
 
   if (loading) {
     return (
@@ -55,11 +55,19 @@ export const ProductDetailsScreen = () => {
           )}
         </View>
       </ScrollView>
-      <TouchableRipple color="black" rippleColor="rgba(255, 255, 255, 0.2)" >
-        <View height={50} width="100%" absB bg-black center style={{ bottom: insets.bottom }}>
+      <TouchableRipple color="black" rippleColor="rgba(255, 255, 255, 0.2)">
+        <View
+          height={50}
+          width="100%"
+          absB
+          bg-black
+          center
+          style={{ bottom: insets.bottom }}>
           <View row flex center>
             <Icon name="cart" color="white" size={16} height={50} />
-            <Text white marginH-7>Add To Cart</Text>
+            <Text white marginH-7>
+              Add To Cart
+            </Text>
           </View>
         </View>
       </TouchableRipple>
