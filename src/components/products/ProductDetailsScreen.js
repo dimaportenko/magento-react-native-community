@@ -13,6 +13,7 @@ import { priceStringFromPriceRange } from '../../logic/util/price';
 import HTML from 'react-native-render-html';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TouchableRipple from '../common/TouchableRipple';
+import { useCart } from '../../logic/cart/useCart';
 
 export const ProductDetailsScreen = () => {
   const insets = useSafeAreaInsets();
@@ -20,10 +21,15 @@ export const ProductDetailsScreen = () => {
   const { getProductDetails, loading, productData } = useProductDetails({
     sku: route?.params?.sku,
   });
+  const { addToCart, addProductLoading } = useCart();
 
   useEffect(() => {
     getProductDetails();
   }, []); // eslint-disable-line
+
+  const onAddToCartPress = () => {
+    addToCart(route?.params?.sku);
+  };
 
   if (loading) {
     return (
@@ -55,16 +61,17 @@ export const ProductDetailsScreen = () => {
           )}
         </View>
       </ScrollView>
-      <TouchableRipple color="black" rippleColor="rgba(255, 255, 255, 0.2)">
-        <View
-          height={50}
-          width="100%"
-          absB
-          bg-black
-          center
-          style={{ bottom: insets.bottom }}>
+      <TouchableRipple
+        color="black"
+        rippleColor="rgba(255, 255, 255, 0.2)"
+        onPress={onAddToCartPress}>
+        <View height={50} width="100%" absB bg-black center style={{ bottom: insets.bottom }}>
           <View row flex center>
-            <Icon name="cart" color="white" size={16} height={50} />
+            {addProductLoading ? (
+              <ActivityIndicator size="small" color="white" />
+            ) : (
+              <Icon name="cart" color="white" size={16} height={50} />
+            )}
             <Text white marginH-7>
               Add To Cart
             </Text>

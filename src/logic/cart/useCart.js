@@ -8,11 +8,15 @@ import { CREATE_CART } from '../../apollo/mutations/createCart';
 import type { CreateCartResponseType } from '../../apollo/mutations/createCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartId, setCartId } from '../../redux/cart';
+import { ADD_PRODUCTS_TO_CART } from '../../apollo/mutations/addProductsToCart';
+import type { AddProductsToCartResponseType } from '../../apollo/mutations/addProductsToCart';
 
 type Props = {||};
 
 type Result = {|
   cartId: string | null,
+  addToCart: (sku: string, quantity?: number) => Promise<void>,
+  addProductLoading: boolean,
 |};
 
 export const useCart = (): Result => {
@@ -20,6 +24,7 @@ export const useCart = (): Result => {
   const dispatch = useDispatch();
 
   const [fetchCartId] = useMutation(CREATE_CART);
+  const [addProductsToCart, { loading: addProductLoading }] = useMutation(ADD_PRODUCTS_TO_CART);
 
   const createCart = async () => {
     try {
@@ -37,6 +42,28 @@ export const useCart = (): Result => {
     }
   };
 
+  const addToCart = async (sku: string, quantity: number = 1) => {
+    try {
+      const {
+        data,
+        errors,
+      }: {
+        data: AddProductsToCartResponseType,
+        errors: ApolloError[],
+      } = await addProductsToCart({
+        variables: {
+          cartId,
+          sku,
+          quantity,
+        },
+      });
+
+      console.log(data, errors);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     if (!cartId) {
       createCart();
@@ -45,5 +72,7 @@ export const useCart = (): Result => {
 
   return {
     cartId,
+    addProductLoading,
+    addToCart,
   };
 };
