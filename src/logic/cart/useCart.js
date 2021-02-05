@@ -4,6 +4,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import { ApolloError, useMutation } from '@apollo/client';
+import { showMessage } from 'react-native-flash-message';
 import { CREATE_CART } from '../../apollo/mutations/createCart';
 import type { CreateCartResponseType } from '../../apollo/mutations/createCart';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +16,7 @@ type Props = {||};
 
 type Result = {|
   cartId: string | null,
-  addToCart: (sku: string, quantity?: number) => Promise<void>,
+  addToCart: (sku: string, name: string, quantity?: number) => Promise<void>,
   addProductLoading: boolean,
 |};
 
@@ -42,7 +43,7 @@ export const useCart = (): Result => {
     }
   };
 
-  const addToCart = async (sku: string, quantity: number = 1) => {
+  const addToCart = async (sku: string, name: string, quantity: number = 1) => {
     try {
       const {
         data,
@@ -56,6 +57,12 @@ export const useCart = (): Result => {
           sku,
           quantity,
         },
+      });
+
+      showMessage({
+        message: 'Success',
+        description: `${name} is added to the cart.`,
+        type: 'success',
       });
 
       console.log(data, errors);

@@ -33,6 +33,7 @@ type RippleButtonProps = {
   color: string,
   rippleColor: string,
   onPress?: () => void,
+  enabled: boolean,
 };
 
 const TouchableRipple = ({
@@ -40,6 +41,7 @@ const TouchableRipple = ({
   color,
   onPress,
   rippleColor,
+  enabled,
 }: RippleButtonProps) => {
   const [radius, setRadius] = useState(-1);
   const { gestureHandler, position, state } = useTapGestureHandler();
@@ -56,10 +58,10 @@ const TouchableRipple = ({
         cond(eq(state, State.END), [call([], onPress || (() => null))]),
       ),
     ],
-    [],
+    [onPress],
   );
   return (
-    <TapGestureHandler {...gestureHandler}>
+    <TapGestureHandler {...gestureHandler} enabled={enabled}>
       <Animated.View {...child.props} style={[child.props.style]}>
         <View
           style={{

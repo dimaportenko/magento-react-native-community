@@ -28,7 +28,7 @@ export const ProductDetailsScreen = () => {
   }, []); // eslint-disable-line
 
   const onAddToCartPress = () => {
-    addToCart(route?.params?.sku);
+    addToCart(route?.params?.sku, productData?.name ?? 'Product');
   };
 
   if (loading) {
@@ -62,6 +62,7 @@ export const ProductDetailsScreen = () => {
         </View>
       </ScrollView>
       <TouchableRipple
+        enabled={!addProductLoading}
         color="black"
         rippleColor="rgba(255, 255, 255, 0.2)"
         onPress={onAddToCartPress}>
