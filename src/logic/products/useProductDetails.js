@@ -23,16 +23,16 @@ type Result = {|
 export const useProductDetails = ({ sku }: Props): Result => {
   const [productData, setProductData] = useState<?ProductDetailsType>(null);
 
-  const [
-    getProductDetailsQuery,
-    responseObject,
-  ] = useLazyQuery<ProductDetailsResponseType>(GET_PRODUCT_DETAILS, {
-    variables: { sku },
-    onCompleted: (response) => {
-      console.log(response);
-      setProductData(response?.products?.items?.[0]);
+  const [getProductDetailsQuery, responseObject] = useLazyQuery<ProductDetailsResponseType>(
+    GET_PRODUCT_DETAILS,
+    {
+      variables: { sku },
+      onCompleted: (response) => {
+        console.log(response);
+        setProductData(response?.products?.items?.[0]);
+      },
     },
-  });
+  );
 
   const { loading } = responseObject;
 

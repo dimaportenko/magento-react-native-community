@@ -27,18 +27,9 @@ export const ProductListItem = ({ item, index, onPress }: Props) => {
         }}
         scaleTo={0.97}
         disabled={false}>
-        <View
-          flex
-          bg-white
-          br40
-          margin-s2
-          shadow70
-          style={{ width: COLUMN_SIZE }}>
+        <View flex bg-white br40 margin-s2 shadow70 style={{ width: COLUMN_SIZE }}>
           <View style={[styles.image, styles.imageWrap]} br40>
-            <Image
-              source={{ uri: item.small_image.url }}
-              style={styles.image}
-            />
+            <Image source={{ uri: item.small_image.url }} style={styles.image} />
           </View>
           <Text center margin-5>
             {item.name}

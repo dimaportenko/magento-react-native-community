@@ -14,13 +14,7 @@ type Props = {
 export const MediaGallery = ({ items }: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const renderItem = ({
-    item,
-    index,
-  }: {
-    item: MediaGalleryItemType,
-    index: number,
-  }) => {
+  const renderItem = ({ item, index }: { item: MediaGalleryItemType, index: number }) => {
     return (
       <View bg-white>
         <Image

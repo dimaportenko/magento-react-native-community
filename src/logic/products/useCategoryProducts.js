@@ -29,23 +29,23 @@ export const useCategoryProducts = ({ categoryId }: Props): Result => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [
-    getCategoryProducts,
-    queryResponse,
-  ] = useLazyQuery<GetCategoryProductsType>(GET_CATEGORY_PRODUCTS, {
-    variables: { id: categoryId, pageSize: PAGE_SIZE, currentPage },
-    onCompleted: (responseData) => {
-      if (responseData?.products?.items && currentPage === 1) {
-        setProducts(responseData?.products?.items);
-      } else if (
-        responseData?.products?.items &&
-        products.length < responseData.products.total_count &&
-        products.length < currentPage * PAGE_SIZE
-      ) {
-        setProducts([...products, ...responseData?.products?.items]);
-      }
+  const [getCategoryProducts, queryResponse] = useLazyQuery<GetCategoryProductsType>(
+    GET_CATEGORY_PRODUCTS,
+    {
+      variables: { id: categoryId, pageSize: PAGE_SIZE, currentPage },
+      onCompleted: (responseData) => {
+        if (responseData?.products?.items && currentPage === 1) {
+          setProducts(responseData?.products?.items);
+        } else if (
+          responseData?.products?.items &&
+          products.length < responseData.products.total_count &&
+          products.length < currentPage * PAGE_SIZE
+        ) {
+          setProducts([...products, ...responseData?.products?.items]);
+        }
+      },
     },
-  });
+  );
   const { loading, error, data } = queryResponse;
 
   useEffect(() => {

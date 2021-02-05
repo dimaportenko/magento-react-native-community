@@ -7,11 +7,7 @@ import { gql } from '@apollo/client';
 
 export const GET_CATEGORY_PRODUCTS = gql`
   query GetCategoryProducts($id: String!, $pageSize: Int!, $currentPage: Int!) {
-    products(
-      filter: { category_id: { eq: $id } }
-      pageSize: $pageSize
-      currentPage: $currentPage
-    ) {
+    products(filter: { category_id: { eq: $id } }, pageSize: $pageSize, currentPage: $currentPage) {
       total_count
       items {
         id

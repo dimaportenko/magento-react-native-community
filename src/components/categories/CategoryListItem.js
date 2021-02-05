@@ -19,9 +19,7 @@ type Props = {
 const ITEM_HEIGHT = 80;
 
 export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
-  const [disabled] = useState(
-    item.children_count < 1 && item.product_count < 1,
-  );
+  const [disabled] = useState(item.children_count < 1 && item.product_count < 1);
 
   const renderText = () => (
     <View flex center>
@@ -30,8 +28,7 @@ export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
   );
 
   const renderImage = (isRight: boolean) => {
-    const rawUri =
-      item.image ?? item?.productPreviewImage?.items?.[0]?.small_image?.url;
+    const rawUri = item.image ?? item?.productPreviewImage?.items?.[0]?.small_image?.url;
     if (!rawUri) {
       return null;
     }
@@ -64,10 +61,7 @@ export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
 
   return (
     <AnimatedAppearance index={index}>
-      <TouchableScale
-        onPress={() => onPress(item)}
-        disabled={disabled}
-        scaleTo={0.97}>
+      <TouchableScale onPress={() => onPress(item)} disabled={disabled} scaleTo={0.97}>
         <View
           center
           row

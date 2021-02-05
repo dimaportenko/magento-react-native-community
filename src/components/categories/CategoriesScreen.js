@@ -38,13 +38,7 @@ export const CategoriesScreen = () => {
     }
   };
 
-  const renderItem = ({
-    item,
-    index,
-  }: {
-    item: CategoryType,
-    index: number,
-  }) => {
+  const renderItem = ({ item, index }: { item: CategoryType, index: number }) => {
     return (
       <CategoryListItem
         item={item}
@@ -62,9 +56,7 @@ export const CategoriesScreen = () => {
         data={categories}
         keyExtractor={(item) => `categoryItem${item.id.toString()}`}
         renderItem={renderItem}
-        refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={getCategories} />
-        }
+        refreshControl={<RefreshControl refreshing={loading} onRefresh={getCategories} />}
       />
     </View>
   );

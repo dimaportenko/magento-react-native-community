@@ -24,9 +24,7 @@ type Props = {
 export const AnimatedAppearance = ({ children, index }: Props) => {
   const play = useSharedValue(false);
   const progress = useDerivedValue(() => {
-    return play.value
-      ? withDelay(50 * (index ?? 0), withTiming(1, { duration: 350 }))
-      : 0;
+    return play.value ? withDelay(50 * (index ?? 0), withTiming(1, { duration: 350 })) : 0;
   });
 
   useEffect(() => {

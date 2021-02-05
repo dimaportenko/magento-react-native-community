@@ -23,25 +23,13 @@ type Props = {
 
 const TimingConfig = { duration: 50, easing: Easing.linear };
 
-export const TouchableScale = ({
-  onPress,
-  children,
-  scaleTo,
-  disabled,
-}: Props) => {
+export const TouchableScale = ({ onPress, children, scaleTo, disabled }: Props) => {
   const pressed = useSharedValue(false);
   const progress = useDerivedValue(() => {
-    return pressed.value
-      ? withTiming(1, TimingConfig)
-      : withTiming(0, TimingConfig);
+    return pressed.value ? withTiming(1, TimingConfig) : withTiming(0, TimingConfig);
   });
   const animatedStyle = useAnimatedStyle(() => {
-    const scale = interpolate(
-      progress.value,
-      [0, 1],
-      [1, scaleTo],
-      Extrapolate.CLAMP,
-    );
+    const scale = interpolate(progress.value, [0, 1], [1, scaleTo], Extrapolate.CLAMP);
 
     return {
       transform: [{ scale }],

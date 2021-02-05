@@ -14,13 +14,7 @@ import * as routes from '../../navigation/routes';
 export const ProductListScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
-  const {
-    loading,
-    products,
-    loadMore,
-    refreshing,
-    refresh,
-  } = useCategoryProducts({
+  const { loading, products, loadMore, refreshing, refresh } = useCategoryProducts({
     categoryId: route?.params?.categoryId,
   });
 
@@ -31,16 +25,8 @@ export const ProductListScreen = () => {
     });
   };
 
-  const renderItem = ({
-    item,
-    index,
-  }: {
-    item: ProductType,
-    index: number,
-  }) => {
-    return (
-      <ProductListItem item={item} index={index} onPress={onProductItemPress} />
-    );
+  const renderItem = ({ item, index }: { item: ProductType, index: number }) => {
+    return <ProductListItem item={item} index={index} onPress={onProductItemPress} />;
   };
 
   const footerComponent = () => {
@@ -65,9 +51,7 @@ export const ProductListScreen = () => {
         data={products}
         keyExtractor={(item) => `productItem${item.id.toString()}`}
         renderItem={renderItem}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={refresh} />
-        }
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} />}
         onEndReached={loadMore}
         ListFooterComponent={footerComponent}
       />

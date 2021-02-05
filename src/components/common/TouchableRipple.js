@@ -36,13 +36,7 @@ type RippleButtonProps = {
   enabled: boolean,
 };
 
-const TouchableRipple = ({
-  children,
-  color,
-  onPress,
-  rippleColor,
-  enabled,
-}: RippleButtonProps) => {
+const TouchableRipple = ({ children, color, onPress, rippleColor, enabled }: RippleButtonProps) => {
   const [radius, setRadius] = useState(-1);
   const { gestureHandler, position, state } = useTapGestureHandler();
   const child = Children.only(children);
@@ -52,12 +46,7 @@ const TouchableRipple = ({
   const opacity = isGoingUp;
   const backgroundColor = rippleColor;
   useCode(
-    () => [
-      onChange(
-        state,
-        cond(eq(state, State.END), [call([], onPress || (() => null))]),
-      ),
-    ],
+    () => [onChange(state, cond(eq(state, State.END), [call([], onPress || (() => null))]))],
     [onPress],
   );
   return (
@@ -82,11 +71,7 @@ const TouchableRipple = ({
                 borderRadius: radius,
                 width: radius * 2,
                 height: radius * 2,
-                transform: [
-                  ...translate(vec.create(-radius)),
-                  ...translate(position),
-                  { scale },
-                ],
+                transform: [...translate(vec.create(-radius)), ...translate(position), { scale }],
               }}
             />
           )}
