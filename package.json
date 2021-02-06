@@ -43,6 +43,8 @@
     "flow-bin": "^0.122.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-flipper": "^0.74.0",
+    "react-native-flipper-apollo-devtools": "^0.0.2",
     "react-test-renderer": "16.13.1"
   },
   "jest": {

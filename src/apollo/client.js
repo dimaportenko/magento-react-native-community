@@ -5,6 +5,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { magentoConfig } from '../../magento.config';
 import possibleTypes from './data/possibleTypes.json';
+import { enableFlipperApolloDevtools } from 'react-native-flipper-apollo-devtools'
 
 export const apolloClient = new ApolloClient({
   uri: `${magentoConfig.url}/graphql`,
@@ -17,3 +18,5 @@ export const apolloClient = new ApolloClient({
     },
   },
 });
+
+enableFlipperApolloDevtools(apolloClient);
