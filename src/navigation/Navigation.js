@@ -10,6 +10,7 @@ import * as routes from './routes';
 import { ProductListScreen } from '../components/products/ProductListScreen';
 import { ProductDetailsScreen } from '../components/products/ProductDetailsScreen';
 import { useCart } from '../logic/cart/useCart';
+import { HeaderCartButton } from '../components/cart/HeaderCartButton';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const RootStack = () => {
       screenOptions={() => ({
         headerBackTitleVisible: false,
         headerTintColor: 'black',
+        headerRight: () => <HeaderCartButton />,
       })}>
       <Stack.Screen
         name={routes.NAVIGATION_CATEGORIES_ROUTE}
