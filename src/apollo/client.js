@@ -4,13 +4,16 @@
  */
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { magentoConfig } from '../../magento.config';
+import possibleTypes from './data/possibleTypes.json';
 
 export const apolloClient = new ApolloClient({
   uri: `${magentoConfig.url}/graphql`,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    possibleTypes,
+  }),
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: 'no-cache',
+      fetchPolicy: 'cache-and-network',
     },
   },
 });

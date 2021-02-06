@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "generatePossibleTypes": "node ./scripts/generatePossibleTypes.js"
   },
   "dependencies": {
     "@apollo/client": "^3.2.2",
