@@ -59,12 +59,21 @@ export const useCart = (): Result => {
         },
       });
 
-      showMessage({
-        message: 'Success',
-        description: `${name} is added to the cart.`,
-        type: 'success',
-      });
+      if (data.addProductsToCart.user_errors.length > 0) {
+        showMessage({
+          message: `${name} isn't added to the cart.`,
+          description: data.addProductsToCart.user_errors[0].message,
+          type: 'danger',
+        });
+      } else {
+        showMessage({
+          message: 'Success',
+          description: `${name} is added to the cart.`,
+          type: 'success',
+        });
+      }
 
+      console.log(data.addProductsToCart.user_errors);
       console.log(data, errors);
     } catch (error) {
       console.log(error);

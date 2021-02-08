@@ -9,17 +9,24 @@ export const ADD_PRODUCTS_TO_CART = gql`
     addProductsToCart(cartId: $cartId, cartItems: [{ quantity: $quantity, sku: $sku }]) {
       cart {
         items {
-          id
+          uid
           product {
             name
             sku
           }
           quantity
         }
+        total_quantity
+      }
+      user_errors {
+        code
+        message
       }
     }
   }
 `;
+
+type CartUserInputErrorType = 'PRODUCT_NOT_FOUND' | 'NOT_SALABLE' | 'INSUFFICIENT_STOCK' | 'UNDEFINED';
 
 export type AddProductsToCartResponseType = {
   addProductsToCart: {
@@ -33,5 +40,9 @@ export type AddProductsToCartResponseType = {
         quantity: number,
       },
     },
+    user_errors: {
+      code: CartUserInputErrorType,
+      message: string,
+    }[],
   },
 };
