@@ -17,6 +17,9 @@ export const ADD_PRODUCTS_TO_CART = gql`
           quantity
         }
       }
+      user_errors {
+        message
+      }
     }
   }
 `;
@@ -33,5 +36,8 @@ export type AddProductsToCartResponseType = {
         quantity: number,
       },
     },
+    user_errors: Array<{
+      message: string,
+    }>,
   },
 };
