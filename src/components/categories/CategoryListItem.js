@@ -33,7 +33,7 @@ export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
       return null;
     }
     const uri = `${rawUri ?? ''}?width=300`;
-    console.log({ uri });
+    // console.log({ uri });
     return (
       <View style={isRight ? styles.right : styles.left}>
         <Image source={{ uri }} resizeMode="cover" style={styles.image} />
