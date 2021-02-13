@@ -11,10 +11,15 @@ export const apolloClient = new ApolloClient({
   uri: `${magentoConfig.url}/graphql`,
   cache: new InMemoryCache({
     possibleTypes,
+    // typePolicies: {
+    //   ProductInterface: {
+    //     keyFields: ['sku'],
+    //   },
+    // },
   }),
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
     },
   },
 });

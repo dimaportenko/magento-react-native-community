@@ -17,6 +17,7 @@ export const GET_CATEGORIES = gql`
         image
         productPreviewImage: products(pageSize: 1) {
           items {
+            sku
             small_image {
               url
             }

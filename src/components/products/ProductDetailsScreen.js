@@ -14,6 +14,7 @@ import HTML from 'react-native-render-html';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TouchableRipple from '../common/TouchableRipple';
 import { useCart } from '../../logic/cart/useCart';
+import { ConfigurableProductOptions } from './ConfigurableProductOptions';
 
 export const ProductDetailsScreen = () => {
   const insets = useSafeAreaInsets();
@@ -39,6 +40,17 @@ export const ProductDetailsScreen = () => {
     );
   }
 
+  const renderOptions = () => {
+    if (productData?.__typename === 'ConfigurableProduct') {
+      return (
+        <View paddingH-15 paddingB-15>
+          <ConfigurableProductOptions options={productData.configurable_options} />
+        </View>
+      );
+    }
+    return null;
+  };
+
   return (
     <View flex>
       <ScrollView>
@@ -50,6 +62,7 @@ export const ProductDetailsScreen = () => {
           <Text text70 center>
             {priceStringFromPriceRange(productData?.price_range)}
           </Text>
+          {renderOptions()}
           {!!productData && (
             <View paddingH-15>
               <HTML

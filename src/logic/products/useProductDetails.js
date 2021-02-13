@@ -2,7 +2,7 @@
  * @flow
  * Created by Dima Portenko on 23.11.2020
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { GET_PRODUCT_DETAILS } from '../../apollo/queries/getProductDetails';
 import type {
@@ -34,11 +34,15 @@ export const useProductDetails = ({ sku }: Props): Result => {
     },
   );
 
-  const { loading } = responseObject;
+  const { loading, data } = responseObject;
 
   const getProductDetails = () => {
     getProductDetailsQuery();
   };
+
+  useEffect(() => {
+    setProductData(data?.products?.items?.[0]);
+  }, [data]);
 
   return {
     getProductDetails,
