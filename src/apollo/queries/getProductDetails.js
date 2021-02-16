@@ -27,6 +27,18 @@ export const GET_PRODUCT_DETAILS = gql`
           }
         }
         ...MediaGallery
+        ... on ConfigurableProduct {
+          configurable_options {
+            attribute_code
+            label
+            values {
+              label
+              swatch_data {
+                value
+              }
+            }
+          }
+        }
       }
       total_count
     }
@@ -34,7 +46,7 @@ export const GET_PRODUCT_DETAILS = gql`
   ${MEDIA_GALLERY_FRAGMENT}
 `;
 
-export type ProductDetailsType = {
+export type ProductInterfaceDetailsType = {
   id: number,
   sku: string,
   name: string,
@@ -44,6 +56,33 @@ export type ProductDetailsType = {
     html: string,
   },
 };
+
+export type SimpleProductDetailsType = {
+  ...ProductInterfaceDetailsType,
+  __typename: 'SimpleProduct',
+};
+
+export type ConfigurableProductOptionValueType = {
+  label: string,
+  swatch_data: {
+    value: string,
+    __typename: 'ImageSwatchData' | 'TextSwatchData' | 'ColorSwatchData',
+  },
+};
+
+export type ConfigurableProductOptionsType = {
+  attribute_code: string,
+  label: string,
+  values: ConfigurableProductOptionValueType[],
+};
+
+export type ConfigurableProductDetailsType = {
+  ...ProductInterfaceDetailsType,
+  __typename: 'ConfigurableProduct',
+  configurable_options: ConfigurableProductOptionsType[],
+};
+
+export type ProductDetailsType = SimpleProductDetailsType | ConfigurableProductDetailsType;
 
 export type ProductDetailsResponseType = {
   products: {
