@@ -33,17 +33,6 @@ export const useCategoryProducts = ({ categoryId }: Props): Result => {
     GET_CATEGORY_PRODUCTS,
     {
       variables: { id: categoryId, pageSize: PAGE_SIZE, currentPage },
-      onCompleted: (responseData) => {
-        if (responseData?.products?.items && currentPage === 1) {
-          setProducts(responseData?.products?.items);
-        } else if (
-          responseData?.products?.items &&
-          products.length < responseData.products.total_count &&
-          products.length < currentPage * PAGE_SIZE
-        ) {
-          setProducts([...products, ...responseData?.products?.items]);
-        }
-      },
     },
   );
   const { loading, error, data } = queryResponse;
@@ -53,6 +42,18 @@ export const useCategoryProducts = ({ categoryId }: Props): Result => {
       getCategoryProducts();
     }
   }, [currentPage, getCategoryProducts]); // eslint-disable-line
+
+  useEffect(() => {
+    if (data?.products?.items && currentPage === 1) {
+      setProducts(data?.products?.items);
+    } else if (
+      data?.products?.items &&
+      products.length < data.products.total_count &&
+      products.length < currentPage * PAGE_SIZE
+    ) {
+      setProducts([...products, ...data?.products?.items]);
+    }
+  }, [data]); // eslint-disable-line
 
   const refresh = () => {
     if (currentPage !== 1) {
