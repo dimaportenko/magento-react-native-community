@@ -8,14 +8,16 @@ import { View, Text } from 'react-native-markup-kit';
 import type { ConfigurableProductOptionValueType } from '../../../apollo/queries/getProductDetails';
 import { TouchableScale } from '../../common/TouchableScale';
 import Icon from 'react-native-vector-icons/Ionicons';
+import type { HandleConfigurableOptionsSelectType } from '../../../logic/products/useProductDetails';
 
 type Props = {
   values: ConfigurableProductOptionValueType[],
+  optionCode: string,
+  handleConfigurableOptionsSelect: HandleConfigurableOptionsSelectType,
+  selectedIndex: number,
 };
 
-export const ConfigurableOptionValues = ({ values }: Props) => {
-  const [selectedIndex, setSelectedIndex] = useState(-1);
-
+export const ConfigurableOptionValues = ({ values, optionCode, handleConfigurableOptionsSelect, selectedIndex }: Props) => {
   const renderValue = (value: ConfigurableProductOptionValueType) => {
     const selected = value.value_index === selectedIndex;
     switch (value.swatch_data.__typename) {
@@ -50,7 +52,7 @@ export const ConfigurableOptionValues = ({ values }: Props) => {
   return (
     <View row marginV-10>
       {values.map((value) => (
-        <TouchableScale onPress={() => setSelectedIndex(value.value_index)}>
+        <TouchableScale onPress={() => handleConfigurableOptionsSelect(optionCode, value.value_index)}>
           <View style={styles.values}>{renderValue(value)}</View>
         </TouchableScale>
       ))}

@@ -10,6 +10,9 @@ import type {
   ProductDetailsType,
 } from '../../apollo/queries/getProductDetails';
 
+export type SelectedConfigurableOptionsType = { [key: string]: number };
+export type HandleConfigurableOptionsSelectType = (code: string, value_index: number) => void;
+
 type Props = {|
   sku: string,
 |};
@@ -18,10 +21,16 @@ type Result = {|
   getProductDetails: () => void,
   loading: boolean,
   productData: ?ProductDetailsType,
+  handleConfigurableOptionsSelect: HandleConfigurableOptionsSelectType,
+  selectedConfigurableOptions: SelectedConfigurableOptionsType,
 |};
 
 export const useProductDetails = ({ sku }: Props): Result => {
   const [productData, setProductData] = useState<?ProductDetailsType>(null);
+  const [
+    selectedConfigurableOptions,
+    setSelectedConfigurableOptions,
+  ] = useState<SelectedConfigurableOptionsType>({});
 
   const [getProductDetailsQuery, responseObject] = useLazyQuery<ProductDetailsResponseType>(
     GET_PRODUCT_DETAILS,
@@ -40,9 +49,15 @@ export const useProductDetails = ({ sku }: Props): Result => {
     setProductData(data?.products?.items?.[0]);
   }, [data]);
 
+  const handleConfigurableOptionsSelect = (code: string, value_index: number): void => {
+    setSelectedConfigurableOptions({ ...selectedConfigurableOptions, [code]: value_index });
+  };
+
   return {
     getProductDetails,
     loading,
     productData,
+    handleConfigurableOptionsSelect,
+    selectedConfigurableOptions,
   };
 };
