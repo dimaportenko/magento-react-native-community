@@ -17,13 +17,13 @@ import Animated, {
 type Props = {
   children: React$Node,
   onPress(): void,
-  scaleTo: number,
-  disabled: boolean,
+  scaleTo?: number,
+  disabled?: boolean,
 };
 
 const TimingConfig = { duration: 50, easing: Easing.linear };
 
-export const TouchableScale = ({ onPress, children, scaleTo, disabled }: Props) => {
+export const TouchableScale = ({ onPress, children, scaleTo = 0.97, disabled = false }: Props) => {
   const pressed = useSharedValue(false);
   const progress = useDerivedValue(() => {
     return pressed.value ? withTiming(1, TimingConfig) : withTiming(0, TimingConfig);

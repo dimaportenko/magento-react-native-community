@@ -33,6 +33,7 @@ export const GET_PRODUCT_DETAILS = gql`
             label
             values {
               label
+              value_index
               swatch_data {
                 value
               }
@@ -64,6 +65,7 @@ export type SimpleProductDetailsType = {
 
 export type ConfigurableProductOptionValueType = {
   label: string,
+  value_index: number,
   swatch_data: {
     value: string,
     __typename: 'ImageSwatchData' | 'TextSwatchData' | 'ColorSwatchData',
