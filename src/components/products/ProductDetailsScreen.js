@@ -19,7 +19,13 @@ import { ConfigurableProductOptions } from './options/ConfigurableProductOptions
 export const ProductDetailsScreen = () => {
   const insets = useSafeAreaInsets();
   const route = useRoute();
-  const { getProductDetails, loading, productData } = useProductDetails({
+  const {
+    getProductDetails,
+    loading,
+    productData,
+    selectedConfigurableProductOptions,
+    handleSelectConfigurableOption,
+  } = useProductDetails({
     sku: route?.params?.sku,
   });
   const { addToCart, addProductLoading } = useCart();
@@ -44,7 +50,11 @@ export const ProductDetailsScreen = () => {
     if (productData?.__typename === 'ConfigurableProduct') {
       return (
         <View paddingH-15>
-          <ConfigurableProductOptions options={productData.configurable_options} />
+          <ConfigurableProductOptions
+            options={productData.configurable_options}
+            handleSelectConfigurableOption={handleSelectConfigurableOption}
+            selectedConfigurableProductOptions={selectedConfigurableProductOptions}
+          />
         </View>
       );
     }

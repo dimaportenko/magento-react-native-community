@@ -5,17 +5,43 @@
 import React from 'react';
 import { View } from 'react-native';
 import type { ConfigurableProductOptionsType } from '../../../apollo/queries/getProductDetails';
-import { ConfigurableOption } from './ConfigurableOption';
+import type {
+  HandleSelectConfigurableOption,
+  SelectedConfigurableProductOptions,
+} from '../../../logic/products/useProductDetails';
+import { Text } from 'react-native-markup-kit';
+import { ConfigurableOptionValues } from './ConfigurableOptionValues';
 
 type Props = {
   options: ConfigurableProductOptionsType[],
+  selectedConfigurableProductOptions: SelectedConfigurableProductOptions,
+  handleSelectConfigurableOption: HandleSelectConfigurableOption,
 };
 
-export const ConfigurableProductOptions = ({ options }: Props) => {
+export const ConfigurableProductOptions = ({
+  options,
+  selectedConfigurableProductOptions,
+  handleSelectConfigurableOption,
+}: Props) => {
+
+  const renderOption = (option: ConfigurableProductOptionsType) => {
+    return (
+      <View>
+        <Text text70R>{option.label}</Text>
+        <ConfigurableOptionValues
+          values={option.values}
+          optionCode={option.attribute_code}
+          selectedIndex={selectedConfigurableProductOptions[option.attribute_code]}
+          handleSelectConfigurableOption={handleSelectConfigurableOption}
+        />
+      </View>
+    );
+  };
+
   return (
     <View>
       {options.map((option) => {
-        return <ConfigurableOption option={option} />;
+        return renderOption(option);
       })}
     </View>
   );
