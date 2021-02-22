@@ -58,6 +58,7 @@ export const ConfigurableOptionValues = ({
     <View row marginV-10>
       {values.map((value) => (
         <TouchableScale
+          key={`${optionCode}${value.value_index}`}
           onPress={() => handleSelectConfigurableOption(optionCode, value.value_index)}>
           <View style={styles.values}>{renderValue(value)}</View>
         </TouchableScale>
