@@ -26,7 +26,7 @@ export const ConfigurableProductOptions = ({
 
   const renderOption = (option: ConfigurableProductOptionsType) => {
     return (
-      <View>
+      <View key={option.attribute_code}>
         <Text text70R>{option.label}</Text>
         <ConfigurableOptionValues
           values={option.values}
