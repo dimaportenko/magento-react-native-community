@@ -5,8 +5,10 @@
 
 import { gql } from '@apollo/client';
 import { MEDIA_GALLERY_FRAGMENT } from './mediaGalleryFragment';
+import { PRODUCT_PRICE_FRAGMENT } from './productPriceFragment';
 import type { MediaGalleryItemType } from './mediaGalleryFragment';
 import type { PriceRange } from './getCategoryProducts';
+import type { PriceRangeItemType } from './productPriceFragment';
 
 export const GET_PRODUCT_DETAILS = gql`
   query GetProductDetails($sku: String!) {
@@ -18,14 +20,7 @@ export const GET_PRODUCT_DETAILS = gql`
         description {
           html
         }
-        price_range {
-          minimum_price {
-            final_price {
-              currency
-              value
-            }
-          }
-        }
+        ...ProductPrice
         ...MediaGallery
         ... on ConfigurableProduct {
           configurable_options {
@@ -39,11 +34,23 @@ export const GET_PRODUCT_DETAILS = gql`
               }
             }
           }
+          variants {
+            attributes {
+              code
+              value_index
+            }
+            product {
+              sku
+              ...ProductPrice
+              ...MediaGallery
+            }
+          }
         }
       }
       total_count
     }
   }
+  ${PRODUCT_PRICE_FRAGMENT}
   ${MEDIA_GALLERY_FRAGMENT}
 `;
 
@@ -78,10 +85,26 @@ export type ConfigurableProductOptionsType = {
   values: ConfigurableProductOptionValueType[],
 };
 
+export type ConfigurableVariantProductType = {
+  sku: string,
+  price_range: PriceRangeItemType,
+};
+
+export type ConfigurableProductVariantAttributeType = {
+  code: string,
+  value_index: number,
+};
+
+export type ConfigurableProductVariantType = {
+  attributes: ConfigurableProductVariantAttributeType[],
+  product: ConfigurableVariantProductType,
+};
+
 export type ConfigurableProductDetailsType = {
   ...ProductInterfaceDetailsType,
   __typename: 'ConfigurableProduct',
   configurable_options: ConfigurableProductOptionsType[],
+  variants: ConfigurableProductVariantType[],
 };
 
 export type ProductDetailsType = SimpleProductDetailsType | ConfigurableProductDetailsType;

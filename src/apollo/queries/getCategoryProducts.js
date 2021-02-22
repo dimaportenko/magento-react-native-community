@@ -4,6 +4,7 @@
  */
 
 import { gql } from '@apollo/client';
+import { PRODUCT_PRICE_FRAGMENT } from './productPriceFragment';
 
 export const GET_CATEGORY_PRODUCTS = gql`
   query GetCategoryProducts($id: String!, $pageSize: Int!, $currentPage: Int!) {
@@ -16,17 +17,11 @@ export const GET_CATEGORY_PRODUCTS = gql`
         small_image {
           url
         }
-        price_range {
-          minimum_price {
-            final_price {
-              currency
-              value
-            }
-          }
-        }
+        ...ProductPrice
       }
     }
   }
+  ${PRODUCT_PRICE_FRAGMENT}
 `;
 
 export type GetCategoryProductsType = {
