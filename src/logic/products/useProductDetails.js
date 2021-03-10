@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { GET_PRODUCT_DETAILS } from '../../apollo/queries/getProductDetails';
 import type {
+  ConfigurableProductVariantType,
   ProductDetailsResponseType,
   ProductDetailsType,
 } from '../../apollo/queries/getProductDetails';
@@ -25,8 +26,27 @@ type Result = {|
   selectedConfigurableOptions: SelectedConfigurableOptionsType,
 |};
 
+const findSelectedVariant = (
+  selectedConfigurableOptions: SelectedConfigurableOptionsType,
+  productData: ProductDetailsType,
+): ?ConfigurableProductVariantType => {
+  if (productData.__typename !== 'ConfigurableProduct') {
+    return null;
+  }
+  let variants = productData.variants;
+  Object.keys(selectedConfigurableOptions).forEach((code) => {
+    variants = variants.filter((variant) => {
+      const attribute = variant.attributes.find((attribute) => attribute.code === code);
+      return attribute?.value_index === selectedConfigurableOptions[code];
+    });
+  });
+
+  return variants?.[0];
+};
+
 export const useProductDetails = ({ sku }: Props): Result => {
   const [productData, setProductData] = useState<?ProductDetailsType>(null);
+  const [selectedVariant, setSelectedVariant] = useState<?ConfigurableProductVariantType>(null);
   const [
     selectedConfigurableOptions,
     setSelectedConfigurableOptions,
@@ -48,6 +68,13 @@ export const useProductDetails = ({ sku }: Props): Result => {
   useEffect(() => {
     setProductData(data?.products?.items?.[0]);
   }, [data]);
+
+  useEffect(() => {
+    if (productData && Object.keys(selectedConfigurableOptions).length > 0) {
+      const variant = findSelectedVariant(selectedConfigurableOptions, productData);
+      setSelectedVariant(variant);
+    }
+  }, [selectedConfigurableOptions, productData]);
 
   const handleConfigurableOptionsSelect = (code: string, value_index: number): void => {
     setSelectedConfigurableOptions({ ...selectedConfigurableOptions, [code]: value_index });
