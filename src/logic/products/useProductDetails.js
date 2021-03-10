@@ -10,6 +10,8 @@ import type {
   ProductDetailsResponseType,
   ProductDetailsType,
 } from '../../apollo/queries/getProductDetails';
+import type { PriceRange } from '../../apollo/queries/getCategoryProducts';
+import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
 
 export type SelectedConfigurableOptionsType = { [key: string]: number };
 export type HandleConfigurableOptionsSelectType = (code: string, value_index: number) => void;
@@ -24,6 +26,8 @@ type Result = {|
   productData: ?ProductDetailsType,
   handleConfigurableOptionsSelect: HandleConfigurableOptionsSelectType,
   selectedConfigurableOptions: SelectedConfigurableOptionsType,
+  price: ?PriceRange,
+  mediaGallery: MediaGalleryItemType[],
 |};
 
 const findSelectedVariant = (
@@ -47,6 +51,8 @@ const findSelectedVariant = (
 export const useProductDetails = ({ sku }: Props): Result => {
   const [productData, setProductData] = useState<?ProductDetailsType>(null);
   const [selectedVariant, setSelectedVariant] = useState<?ConfigurableProductVariantType>(null);
+  const [price, setPrice] = useState<?PriceRange>(null);
+  const [mediaGallery, setMediaGallery] = useState<MediaGalleryItemType[]>([]);
   const [
     selectedConfigurableOptions,
     setSelectedConfigurableOptions,
@@ -70,6 +76,18 @@ export const useProductDetails = ({ sku }: Props): Result => {
   }, [data]);
 
   useEffect(() => {
+    if (productData) {
+      if (selectedVariant) {
+        setPrice(selectedVariant.product.price_range);
+        setMediaGallery([...selectedVariant.product.media_gallery, ...productData.media_gallery]);
+      } else {
+        setPrice(productData.price_range);
+        setMediaGallery(productData.media_gallery);
+      }
+    }
+  }, [productData, selectedVariant]);
+
+  useEffect(() => {
     if (productData && Object.keys(selectedConfigurableOptions).length > 0) {
       const variant = findSelectedVariant(selectedConfigurableOptions, productData);
       setSelectedVariant(variant);
@@ -86,5 +104,7 @@ export const useProductDetails = ({ sku }: Props): Result => {
     productData,
     handleConfigurableOptionsSelect,
     selectedConfigurableOptions,
+    price,
+    mediaGallery,
   };
 };

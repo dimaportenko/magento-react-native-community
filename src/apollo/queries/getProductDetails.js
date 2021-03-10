@@ -88,6 +88,7 @@ export type ConfigurableProductOptionsType = {
 export type ConfigurableVariantProductType = {
   sku: string,
   price_range: PriceRangeItemType,
+  media_gallery: Array<MediaGalleryItemType>,
 };
 
 export type ConfigurableProductVariantAttributeType = {

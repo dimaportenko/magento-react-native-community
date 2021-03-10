@@ -25,6 +25,8 @@ export const ProductDetailsScreen = () => {
     productData,
     handleConfigurableOptionsSelect,
     selectedConfigurableOptions,
+    price,
+    mediaGallery,
   } = useProductDetails({
     sku: route?.params?.sku,
   });
@@ -65,12 +67,12 @@ export const ProductDetailsScreen = () => {
     <View flex>
       <ScrollView>
         <View flex style={{ paddingBottom: insets.bottom + 50 }}>
-          <MediaGallery items={productData?.media_gallery ?? []} />
+          <MediaGallery items={mediaGallery} />
           <Text marginT-15 text70 center>
             {productData?.name}
           </Text>
           <Text text70 center>
-            {priceStringFromPriceRange(productData?.price_range)}
+            {priceStringFromPriceRange(price)}
           </Text>
           {renderOptions()}
           {!!productData && (

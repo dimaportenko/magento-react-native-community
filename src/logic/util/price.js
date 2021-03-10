@@ -4,7 +4,7 @@
  */
 import type { PriceRange } from '../../apollo/queries/getCategoryProducts';
 
-export const priceStringFromPriceRange = (priceRange?: PriceRange) => {
+export const priceStringFromPriceRange = (priceRange: ?PriceRange) => {
   if (priceRange) {
     return `${priceRange.minimum_price.final_price.currency} ${priceRange.minimum_price.final_price.value}`;
   }
