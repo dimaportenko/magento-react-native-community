@@ -12,6 +12,7 @@ import type {
 } from '../../apollo/queries/getProductDetails';
 import type { PriceRange } from '../../apollo/queries/getCategoryProducts';
 import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
+import { useCart } from '../cart/useCart';
 
 export type SelectedConfigurableOptionsType = { [key: string]: number };
 export type HandleConfigurableOptionsSelectType = (code: string, value_index: number) => void;
@@ -28,6 +29,8 @@ type Result = {|
   selectedConfigurableOptions: SelectedConfigurableOptionsType,
   price: ?PriceRange,
   mediaGallery: MediaGalleryItemType[],
+  addToCart: () => void,
+  addProductLoading: boolean,
 |};
 
 const findSelectedVariant = (
@@ -57,6 +60,8 @@ export const useProductDetails = ({ sku }: Props): Result => {
     selectedConfigurableOptions,
     setSelectedConfigurableOptions,
   ] = useState<SelectedConfigurableOptionsType>({});
+
+  const { addToCart, addProductLoading } = useCart();
 
   const [getProductDetailsQuery, responseObject] = useLazyQuery<ProductDetailsResponseType>(
     GET_PRODUCT_DETAILS,
@@ -98,6 +103,27 @@ export const useProductDetails = ({ sku }: Props): Result => {
     setSelectedConfigurableOptions({ ...selectedConfigurableOptions, [code]: value_index });
   };
 
+  const addToCartSelectedProduct = () => {
+    if (productData?.__typename === 'SimpleProduct') {
+      addToCart(
+        {
+          sku: productData.sku,
+          quantity: 1,
+        },
+        productData.name,
+      );
+    } else if (productData?.__typename === 'ConfigurableProduct' && selectedVariant) {
+      addToCart(
+        {
+          parentSku: productData.sku,
+          sku: selectedVariant?.product.sku,
+          quantity: 1,
+        },
+        productData.name,
+      );
+    }
+  };
+
   return {
     getProductDetails,
     loading,
@@ -106,5 +132,7 @@ export const useProductDetails = ({ sku }: Props): Result => {
     selectedConfigurableOptions,
     price,
     mediaGallery,
+    addToCart: addToCartSelectedProduct,
+    addProductLoading,
   };
 };

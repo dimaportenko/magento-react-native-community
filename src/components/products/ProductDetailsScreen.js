@@ -27,17 +27,18 @@ export const ProductDetailsScreen = () => {
     selectedConfigurableOptions,
     price,
     mediaGallery,
+    addToCart,
+    addProductLoading,
   } = useProductDetails({
     sku: route?.params?.sku,
   });
-  const { addToCart, addProductLoading } = useCart();
 
   useEffect(() => {
     getProductDetails();
   }, []); // eslint-disable-line
 
   const onAddToCartPress = () => {
-    addToCart(route?.params?.sku, productData?.name ?? 'Product');
+    addToCart();
   };
 
   if (loading) {
