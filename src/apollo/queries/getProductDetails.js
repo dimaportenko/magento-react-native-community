@@ -5,6 +5,7 @@
 
 import { gql } from '@apollo/client';
 import { MEDIA_GALLERY_FRAGMENT } from './mediaGalleryFragment';
+import { PRODUCT_PRICE_FRAGMENT } from './productPriceFragment';
 import type { MediaGalleryItemType } from './mediaGalleryFragment';
 import type { PriceRange } from './getCategoryProducts';
 
@@ -39,12 +40,24 @@ export const GET_PRODUCT_DETAILS = gql`
               }
             }
           }
+          variants {
+            attributes {
+              code
+              value_index
+            }
+            product {
+              sku
+              ...MediaGallery
+              ...ProductPrice
+            }
+          }
         }
       }
       total_count
     }
   }
   ${MEDIA_GALLERY_FRAGMENT}
+  ${PRODUCT_PRICE_FRAGMENT}
 `;
 
 export type ProductInterfaceDetailsType = {
@@ -78,10 +91,27 @@ export type ConfigurableProductOptionsType = {
   values: ConfigurableProductOptionValueType[],
 };
 
+export type ConfigurableProductVariantAttribute = {
+  code: string,
+  value_index: number,
+};
+
+export type ConfigurableProductVariantProduct = {
+  sku: string,
+  media_gallery: Array<MediaGalleryItemType>,
+  price_range: PriceRange,
+};
+
+export type ConfigurableProductVariant = {
+  attributes: ConfigurableProductVariantAttribute[],
+  product: ConfigurableProductVariantProduct,
+};
+
 export type ConfigurableProductDetailsType = {
   ...ProductInterfaceDetailsType,
   __typename: 'ConfigurableProduct',
   configurable_options: ConfigurableProductOptionsType[],
+  variants: ConfigurableProductVariant[],
 };
 
 export type ProductDetailsType = SimpleProductDetailsType | ConfigurableProductDetailsType;

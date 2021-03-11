@@ -25,17 +25,20 @@ export const ProductDetailsScreen = () => {
     productData,
     selectedConfigurableProductOptions,
     handleSelectConfigurableOption,
+    mediaGallery,
+    price,
+    addToCart,
+    addProductLoading,
   } = useProductDetails({
     sku: route?.params?.sku,
   });
-  const { addToCart, addProductLoading } = useCart();
 
   useEffect(() => {
     getProductDetails();
   }, []); // eslint-disable-line
 
   const onAddToCartPress = () => {
-    addToCart(route?.params?.sku, productData?.name ?? 'Product');
+    addToCart();
   };
 
   if (loading) {
@@ -65,12 +68,12 @@ export const ProductDetailsScreen = () => {
     <View flex>
       <ScrollView>
         <View flex style={{ paddingBottom: insets.bottom + 50 }}>
-          <MediaGallery items={productData?.media_gallery ?? []} />
+          <MediaGallery items={mediaGallery} />
           <Text marginT-15 text70 center>
             {productData?.name}
           </Text>
           <Text text70 center>
-            {priceStringFromPriceRange(productData?.price_range)}
+            {priceStringFromPriceRange(price)}
           </Text>
           {renderOptions()}
           {!!productData && (

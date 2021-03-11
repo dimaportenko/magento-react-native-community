@@ -14,9 +14,15 @@ import type { AddProductsToCartResponseType } from '../../apollo/mutations/addPr
 
 type Props = {||};
 
+type CartPayloadType = {|
+  sku: string,
+  quantity: number,
+  parent_sku?: string,
+|};
+
 type Result = {|
   cartId: string | null,
-  addToCart: (sku: string, name: string, quantity?: number) => Promise<void>,
+  addToCart: (payload: CartPayloadType, name: string) => Promise<void>,
   addProductLoading: boolean,
 |};
 
@@ -43,7 +49,7 @@ export const useCart = (): Result => {
     }
   };
 
-  const addToCart = async (sku: string, name: string, quantity: number = 1) => {
+  const addToCart = async (payload: CartPayloadType, name: string) => {
     try {
       const {
         data,
@@ -54,8 +60,7 @@ export const useCart = (): Result => {
       } = await addProductsToCart({
         variables: {
           cartId,
-          sku,
-          quantity,
+          ...payload,
         },
       });
 
