@@ -9,7 +9,6 @@ import Animated, {
   useSharedValue,
   useDerivedValue,
   withSpring,
-  Easing,
   interpolate,
   Extrapolate,
   withDelay,

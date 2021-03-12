@@ -9,7 +9,6 @@ import Animated, {
   useSharedValue,
   useDerivedValue,
   withTiming,
-  Easing,
   interpolate,
   Extrapolate,
 } from 'react-native-reanimated';
@@ -21,7 +20,7 @@ type Props = {
   disabled?: boolean,
 };
 
-const TimingConfig = { duration: 50, easing: Easing.linear };
+const TimingConfig = { duration: 50 };
 
 export const TouchableScale = ({ onPress, children, scaleTo = 0.97, disabled = false }: Props) => {
   const pressed = useSharedValue(false);
