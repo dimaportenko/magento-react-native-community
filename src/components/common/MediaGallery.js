@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { FlatList, Image } from 'react-native';
 import { View, Constants, Text } from 'react-native-markup-kit';
 import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
+import { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
 
 type Props = {
   items: Array<MediaGalleryItemType>,
@@ -14,7 +15,7 @@ type Props = {
 export const MediaGallery = ({ items }: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const renderItem = ({ item, index }: { item: MediaGalleryItemType, index: number }) => {
+  const renderItem = ({ item, index }: RenderItemProps<MediaGalleryItemType>) => {
     return (
       <View bg-white>
         <Image
@@ -29,7 +30,7 @@ export const MediaGallery = ({ items }: Props) => {
     );
   };
 
-  const onMomentumScrollEnd = (event) => {
+  const onMomentumScrollEnd = event => {
     const contentOffset = event.nativeEvent.contentOffset.x;
     const width = event.nativeEvent.layoutMeasurement.width;
 
@@ -48,8 +49,17 @@ export const MediaGallery = ({ items }: Props) => {
         pagingEnabled
         onMomentumScrollEnd={onMomentumScrollEnd}
       />
-      <View abs right paddingH-10 paddingV-5 margin-5 bg-grey30 br60>
-        <Text white>{`${currentPage} / ${items.length}`}</Text>
+      <View
+        style={{
+          position: 'absolute',
+          right: 10,
+          top: 5,
+          paddingHorizontal: 10,
+          paddingVertical: 5,
+        }}
+        bg-grey30
+        br60>
+        <Text white>{`${currentPage} / ${items?.length}`}</Text>
       </View>
     </View>
   );
