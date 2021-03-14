@@ -36,7 +36,7 @@ type RippleButtonProps = {
   enabled: boolean,
 };
 
-const TouchableRipple = ({ children, color, onPress, rippleColor, enabled }: RippleButtonProps) => {
+const TouchableRipple = ({ children, color, onPress, rippleColor, enabled }: RippleButtonProps): React$Node => {
   const [radius, setRadius] = useState(-1);
   const { gestureHandler, position, state } = useTapGestureHandler();
   const child = Children.only(children);

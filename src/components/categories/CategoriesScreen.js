@@ -11,8 +11,9 @@ import { useNavigation, useRoute } from '@react-navigation/core';
 import * as routes from '../../navigation/routes';
 import { CategoryListItem } from './CategoryListItem';
 import { useCategoryColors } from '../../logic/categories/useCategoryColors';
+import type { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
 
-export const CategoriesScreen = () => {
+export const CategoriesScreen = (): React$Node => {
   const { getCategoryColorByIndex } = useCategoryColors();
   const route = useRoute();
   const navigation = useNavigation();
@@ -38,7 +39,7 @@ export const CategoriesScreen = () => {
     }
   };
 
-  const renderItem = ({ item, index }: { item: CategoryType, index: number }) => {
+  const renderItem = ({ item, index }: RenderItemProps<CategoryType>) => {
     return (
       <CategoryListItem
         item={item}

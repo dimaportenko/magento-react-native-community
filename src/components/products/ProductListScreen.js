@@ -10,8 +10,10 @@ import { useNavigation, useRoute } from '@react-navigation/core';
 import type { ProductType } from '../../apollo/queries/getCategoryProducts';
 import { ProductListItem } from './ProductListItem';
 import * as routes from '../../navigation/routes';
+import type { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
+import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
 
-export const ProductListScreen = () => {
+export const ProductListScreen = (): React$Node => {
   const route = useRoute();
   const navigation = useNavigation();
   const { loading, products, loadMore, refreshing, refresh } = useCategoryProducts({
@@ -25,7 +27,7 @@ export const ProductListScreen = () => {
     });
   };
 
-  const renderItem = ({ item, index }: { item: ProductType, index: number }) => {
+  const renderItem = ({ item, index }: RenderItemProps<ProductType>) => {
     return <ProductListItem item={item} index={index} onPress={onProductItemPress} />;
   };
 
@@ -49,7 +51,7 @@ export const ProductListScreen = () => {
           marginHorizontal: Spacings.s2,
         }}
         data={products}
-        keyExtractor={(item) => `productItem${item.id.toString()}`}
+        keyExtractor={item => `productItem${item.id.toString()}`}
         renderItem={renderItem}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} />}
         onEndReached={loadMore}

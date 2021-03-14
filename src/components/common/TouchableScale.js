@@ -22,7 +22,7 @@ type Props = {
 
 const TimingConfig = { duration: 50 };
 
-export const TouchableScale = ({ onPress, children, scaleTo = 0.97, disabled = false }: Props) => {
+export const TouchableScale = ({ onPress, children, scaleTo = 0.97, disabled = false }: Props): React$Node => {
   const pressed = useSharedValue(false);
   const progress = useDerivedValue(() => {
     return pressed.value ? withTiming(1, TimingConfig) : withTiming(0, TimingConfig);

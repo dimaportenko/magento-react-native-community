@@ -47,7 +47,7 @@ const RootStack = () => {
   );
 };
 
-export const Navigation = () => {
+export const Navigation = (): React$Node => {
   return (
     <NavigationContainer>
       <RootStack />

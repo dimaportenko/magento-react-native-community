@@ -22,8 +22,7 @@ export const ConfigurableProductOptions = ({
   options,
   selectedConfigurableProductOptions,
   handleSelectConfigurableOption,
-}: Props) => {
-
+}: Props): React$Node => {
   const renderOption = (option: ConfigurableProductOptionsType) => {
     return (
       <View key={option.attribute_code}>
@@ -40,7 +39,7 @@ export const ConfigurableProductOptions = ({
 
   return (
     <View>
-      {options.map((option) => {
+      {options.map(option => {
         return renderOption(option);
       })}
     </View>

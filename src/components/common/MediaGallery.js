@@ -6,13 +6,13 @@ import React, { useState } from 'react';
 import { FlatList, Image } from 'react-native';
 import { View, Constants, Text } from 'react-native-markup-kit';
 import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
-import { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
+import type { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
 
 type Props = {
   items: Array<MediaGalleryItemType>,
 };
 
-export const MediaGallery = ({ items }: Props) => {
+export const MediaGallery = ({ items }: Props): React$Node => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const renderItem = ({ item, index }: RenderItemProps<MediaGalleryItemType>) => {

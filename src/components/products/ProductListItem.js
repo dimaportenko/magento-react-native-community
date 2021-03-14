@@ -18,7 +18,7 @@ type Props = {
 
 const COLUMN_SIZE = Constants.screenWidth / 2 - Spacings.s2 * 3;
 
-export const ProductListItem = ({ item, index, onPress }: Props) => {
+export const ProductListItem = ({ item, index, onPress }: Props): React$Node => {
   return (
     <AnimatedAppearance index={index}>
       <TouchableScale

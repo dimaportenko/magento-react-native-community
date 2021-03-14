@@ -18,7 +18,7 @@ type Props = {
 
 const ITEM_HEIGHT = 80;
 
-export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
+export const CategoryListItem = ({ item, onPress, color, index }: Props): React$Node => {
   const [disabled] = useState(item.children_count < 1 && item.product_count < 1);
 
   const renderText = () => (

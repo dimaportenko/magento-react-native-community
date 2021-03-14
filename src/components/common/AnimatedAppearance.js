@@ -3,14 +3,11 @@
  * Created by Dima Portenko on 06.11.2020
  */
 import React, { useEffect } from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   useDerivedValue,
-  withSpring,
   interpolate,
-  Extrapolate,
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
@@ -20,7 +17,7 @@ type Props = {
   index?: number,
 };
 
-export const AnimatedAppearance = ({ children, index }: Props) => {
+export const AnimatedAppearance = ({ children, index }: Props): React$Node => {
   const play = useSharedValue(false);
   const progress = useDerivedValue(() => {
     return play.value ? withDelay(50 * (index ?? 0), withTiming(1, { duration: 350 })) : 0;

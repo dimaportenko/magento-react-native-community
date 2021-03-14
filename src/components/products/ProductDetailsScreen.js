@@ -16,7 +16,7 @@ import TouchableRipple from '../common/TouchableRipple';
 import { useCart } from '../../logic/cart/useCart';
 import { ConfigurableProductOptions } from './options/ConfigurableProductOptions';
 
-export const ProductDetailsScreen = () => {
+export const ProductDetailsScreen = (): React$Node => {
   const insets = useSafeAreaInsets();
   const route = useRoute();
   const {
@@ -97,7 +97,7 @@ export const ProductDetailsScreen = () => {
             {addProductLoading ? (
               <ActivityIndicator size="small" color="white" />
             ) : (
-              <Icon name="cart" color="white" size={16} height={50} />
+              <Icon name="cart" color="white" size={16} />
             )}
             <Text white marginH-7>
               Add To Cart

@@ -22,7 +22,7 @@ export const ConfigurableOptionValues = ({
   selectedIndex,
   handleSelectConfigurableOption,
   optionCode,
-}: Props) => {
+}: Props): React$Node => {
   const renderValue = (value: ConfigurableProductOptionValueType) => {
     const selected = selectedIndex === value.value_index;
     switch (value.swatch_data.__typename) {
@@ -56,7 +56,7 @@ export const ConfigurableOptionValues = ({
 
   return (
     <View row marginV-10>
-      {values.map((value) => (
+      {values.map(value => (
         <TouchableScale
           key={`${optionCode}${value.value_index}`}
           onPress={() => handleSelectConfigurableOption(optionCode, value.value_index)}>
