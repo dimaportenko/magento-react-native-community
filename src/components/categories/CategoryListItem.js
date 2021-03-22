@@ -4,10 +4,12 @@
  */
 import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, Image, StyleSheet } from 'react-native';
-import { Text, View } from 'react-native-markup-kit';
+import View from 'react-native-ui-lib/view';
+import Text from 'react-native-ui-lib/text';
 import type { CategoryType } from '../../apollo/queries/getCategory';
 import { TouchableScale } from '../common/TouchableScale';
 import { AnimatedAppearance } from '../common/AnimatedAppearance';
+import { Shadows } from '../../theme/shadows';
 
 type Props = {
   item: CategoryType,
@@ -63,13 +65,13 @@ export const CategoryListItem = ({ item, onPress, color, index }: Props): React$
     <AnimatedAppearance index={index}>
       <TouchableScale onPress={() => onPress(item)} disabled={disabled} scaleTo={0.97}>
         <View
+          style={{ ...Shadows.shadow70 }}
           center
           row
           height={ITEM_HEIGHT}
           backgroundColor={color}
           marginH-15
           marginB-15
-          shadow70
           br40>
           {renderContent()}
         </View>

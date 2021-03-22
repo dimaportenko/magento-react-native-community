@@ -4,7 +4,7 @@
  */
 import React, { useEffect } from 'react';
 import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
-import { View, Text, Constants, Spacings } from 'react-native-markup-kit';
+import View from 'react-native-ui-lib/view';
 import { useCategoryProducts } from '../../logic/products/useCategoryProducts';
 import { useNavigation, useRoute } from '@react-navigation/core';
 import type { ProductType } from '../../apollo/queries/getCategoryProducts';
@@ -12,6 +12,7 @@ import { ProductListItem } from './ProductListItem';
 import * as routes from '../../navigation/routes';
 import type { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
 import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
+import { Spacings } from 'react-native-ui-lib/core';
 
 export const ProductListScreen = (): React$Node => {
   const route = useRoute();

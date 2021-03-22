@@ -4,7 +4,8 @@
  */
 import React, { useEffect } from 'react';
 import { ActivityIndicator, ScrollView } from 'react-native';
-import { View, Text, Constants } from 'react-native-markup-kit';
+import View from 'react-native-ui-lib/view';
+import Text from 'react-native-ui-lib/text';
 import { useRoute } from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useProductDetails } from '../../logic/products/useProductDetails';
@@ -15,9 +16,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TouchableRipple from '../common/TouchableRipple';
 import { useCart } from '../../logic/cart/useCart';
 import { ConfigurableProductOptions } from './options/ConfigurableProductOptions';
+import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 
 export const ProductDetailsScreen = (): React$Node => {
   const insets = useSafeAreaInsets();
+  const { width: screenWidth } = useWindowDimensions();
   const route = useRoute();
   const {
     getProductDetails,
@@ -80,7 +83,7 @@ export const ProductDetailsScreen = (): React$Node => {
             <View paddingH-15>
               <HTML
                 source={{ html: productData?.description.html }}
-                contentWidth={Constants.screenWidth}
+                contentWidth={screenWidth}
                 baseFontStyle={{ fontSize: 15 }}
               />
             </View>

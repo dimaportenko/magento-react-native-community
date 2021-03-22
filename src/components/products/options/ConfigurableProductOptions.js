@@ -9,7 +9,7 @@ import type {
   HandleSelectConfigurableOption,
   SelectedConfigurableProductOptions,
 } from '../../../logic/products/useProductDetails';
-import { Text } from 'react-native-markup-kit';
+import Text from 'react-native-ui-lib/text';
 import { ConfigurableOptionValues } from './ConfigurableOptionValues';
 
 type Props = {

@@ -4,9 +4,11 @@
  */
 import React, { useState } from 'react';
 import { FlatList, Image } from 'react-native';
-import { View, Constants, Text } from 'react-native-markup-kit';
+import View from 'react-native-ui-lib/view';
+import Text from 'react-native-ui-lib/text';
 import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
 import type { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
+import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 
 type Props = {
   items: Array<MediaGalleryItemType>,
@@ -14,6 +16,7 @@ type Props = {
 
 export const MediaGallery = ({ items }: Props): React$Node => {
   const [currentPage, setCurrentPage] = useState(1);
+  const { width: screenWidth } = useWindowDimensions();
 
   const renderItem = ({ item, index }: RenderItemProps<MediaGalleryItemType>) => {
     return (
@@ -21,8 +24,8 @@ export const MediaGallery = ({ items }: Props): React$Node => {
         <Image
           source={{ uri: item.url }}
           style={{
-            width: Constants.screenWidth,
-            height: Constants.screenWidth,
+            width: screenWidth,
+            height: screenWidth,
           }}
           resizeMode="contain"
         />

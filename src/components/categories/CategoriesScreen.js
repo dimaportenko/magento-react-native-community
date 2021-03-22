@@ -4,7 +4,7 @@
  */
 import React, { useEffect } from 'react';
 import { FlatList, RefreshControl, ActivityIndicator } from 'react-native';
-import { Text, View } from 'react-native-markup-kit';
+import View from 'react-native-ui-lib/view';
 import { useCategories } from '../../logic/categories/useCategories';
 import type { CategoryType } from '../../apollo/queries/getCategory';
 import { useNavigation, useRoute } from '@react-navigation/core';

@@ -4,7 +4,8 @@
  */
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { View, Text } from 'react-native-markup-kit';
+import View from 'react-native-ui-lib/view';
+import Text from 'react-native-ui-lib/text';
 import type { ConfigurableProductOptionValueType } from '../../../apollo/queries/getProductDetails';
 import { TouchableScale } from '../../common/TouchableScale';
 import Icon from 'react-native-vector-icons/Ionicons';

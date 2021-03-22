@@ -8,14 +8,14 @@
 
 import React, { useEffect } from 'react';
 import { ApolloProvider } from '@apollo/client';
-import FlashMessage from "react-native-flash-message";
+import View from 'react-native-ui-lib/view';
+import FlashMessage from 'react-native-flash-message';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import SplashScreen from 'react-native-splash-screen';
 import { Navigation } from './src/navigation/Navigation';
 import { apolloClient } from './src/apollo/client';
 import { persistor, store } from './src/redux/store';
-import { View } from 'react-native-markup-kit';
 
 const App: () => React$Node = () => {
   useEffect(() => {

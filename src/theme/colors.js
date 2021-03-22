@@ -12,4 +12,4 @@ const categoryColors = [
 
 const shuffle = (array: Array<string>): Array<string> => array.sort(() => Math.random() - 0.5);
 
-export const getCategoryColors = () => shuffle(categoryColors);
+export const getCategoryColors = (): string[] => shuffle(categoryColors);
