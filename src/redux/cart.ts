@@ -10,7 +10,7 @@ const cartSlice = createSlice({
     cartId: null,
   },
   reducers: {
-    setCartId(state, action) {
+    setCartId(state, action?) {
       state.cartId = action.payload;
     },
   },

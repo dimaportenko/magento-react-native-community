@@ -13,9 +13,9 @@ import FlashMessage from 'react-native-flash-message';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import SplashScreen from 'react-native-splash-screen';
-import { Navigation } from './src/navigation/Navigation';
-import { apolloClient } from './src/apollo/client';
-import { persistor, store } from './src/redux/store';
+import { Navigation } from './navigation/Navigation';
+import { apolloClient } from './apollo/client';
+import { persistor, store } from './redux/store';
 
 const App: () => React$Node = () => {
   useEffect(() => {
