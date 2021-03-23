@@ -2,7 +2,7 @@
  * @flow
  * Created by Dima Portenko on 16.02.2021
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { View } from 'react-native';
 import type { ConfigurableProductOptionsType } from '../../../apollo/queries/getProductDetails';
 import type {
@@ -13,16 +13,16 @@ import Text from 'react-native-ui-lib/text';
 import { ConfigurableOptionValues } from './ConfigurableOptionValues';
 
 type Props = {
-  options: ConfigurableProductOptionsType[],
-  selectedConfigurableProductOptions: SelectedConfigurableProductOptions,
-  handleSelectConfigurableOption: HandleSelectConfigurableOption,
+  options: ConfigurableProductOptionsType[];
+  selectedConfigurableProductOptions: SelectedConfigurableProductOptions;
+  handleSelectConfigurableOption: HandleSelectConfigurableOption;
 };
 
 export const ConfigurableProductOptions = ({
   options,
   selectedConfigurableProductOptions,
   handleSelectConfigurableOption,
-}: Props): React$Node => {
+}: Props) => {
   const renderOption = (option: ConfigurableProductOptionsType) => {
     return (
       <View key={option.attribute_code}>

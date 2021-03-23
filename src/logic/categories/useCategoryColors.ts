@@ -5,14 +5,14 @@
 import React, { useState, useEffect } from 'react';
 import { getCategoryColors } from '../../theme/colors';
 
-type Props = {||};
+type Props = {};
 
-type Result = {|
-  getCategoryColorByIndex(index: number): string,
-|};
+type Result = {
+  getCategoryColorByIndex(index: number): string;
+};
 
 export const useCategoryColors = (): Result => {
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useState<string[]>([]);
 
   useEffect(() => {
     setColors(getCategoryColors());

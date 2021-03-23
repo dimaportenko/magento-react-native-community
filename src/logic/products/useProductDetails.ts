@@ -17,33 +17,33 @@ import { useCart } from '../cart/useCart';
 export type SelectedConfigurableProductOptions = { [key: string]: number };
 export type HandleSelectConfigurableOption = (optionCode: string, valueIndex: number) => void;
 
-type Props = {|
-  sku: string,
-|};
+type Props = {
+  sku: string;
+};
 
-type Result = {|
-  getProductDetails: () => void,
-  loading: boolean,
-  productData: ?ProductDetailsType,
-  selectedConfigurableProductOptions: SelectedConfigurableProductOptions,
-  handleSelectConfigurableOption: HandleSelectConfigurableOption,
-  price: ?PriceRange,
-  mediaGallery: MediaGalleryItemType[],
-  addProductLoading: boolean,
-  addToCart(): void,
-|};
+type Result = {
+  getProductDetails: () => void;
+  loading: boolean;
+  productData: ProductDetailsType | null | undefined;
+  selectedConfigurableProductOptions: SelectedConfigurableProductOptions;
+  handleSelectConfigurableOption: HandleSelectConfigurableOption;
+  price: PriceRange | null;
+  mediaGallery: MediaGalleryItemType[];
+  addProductLoading: boolean;
+  addToCart(): void;
+};
 
 const findSelectProductVariant = (
   selectedConfigurableProductOptions: SelectedConfigurableProductOptions,
   productData: ProductDetailsType,
-): ?ConfigurableProductVariant => {
+): ConfigurableProductVariant | null => {
   if (productData.__typename !== 'ConfigurableProduct') {
     return null;
   }
   let variants = productData.variants;
-  Object.keys(selectedConfigurableProductOptions).forEach((code) => {
-    variants = variants.filter((variant) => {
-      const attribute = variant.attributes.find((attr) => attr.code === code);
+  Object.keys(selectedConfigurableProductOptions).forEach(code => {
+    variants = variants.filter(variant => {
+      const attribute = variant.attributes.find(attr => attr.code === code);
       return attribute?.value_index === selectedConfigurableProductOptions[code];
     });
   });
@@ -52,13 +52,12 @@ const findSelectProductVariant = (
 };
 
 export const useProductDetails = ({ sku }: Props): Result => {
-  const [productData, setProductData] = useState<?ProductDetailsType>(null);
-  const [
-    selectedConfigurableProductOptions,
-    setSelectedConfigurableProductOptions,
-  ] = useState<SelectedConfigurableProductOptions>({});
-  const [selectedVariant, setSelectedVariant] = useState<?ConfigurableProductVariant>(null);
-  const [price, setPrice] = useState<?PriceRange>(null);
+  const [productData, setProductData] = useState<ProductDetailsType | null | undefined>(null);
+  const [selectedConfigurableProductOptions, setSelectedConfigurableProductOptions] = useState<
+    SelectedConfigurableProductOptions
+  >({});
+  const [selectedVariant, setSelectedVariant] = useState<ConfigurableProductVariant | null>(null);
+  const [price, setPrice] = useState<PriceRange | null>(null);
   const [mediaGallery, setMediaGallery] = useState<MediaGalleryItemType[]>([]);
 
   const { addToCart, addProductLoading } = useCart();

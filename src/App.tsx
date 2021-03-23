@@ -17,7 +17,7 @@ import { Navigation } from './navigation/Navigation';
 import { apolloClient } from './apollo/client';
 import { persistor, store } from './redux/store';
 
-const App: () => React$Node = () => {
+const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);

@@ -10,23 +10,23 @@ import type {
   ProductType,
 } from '../../apollo/queries/getCategoryProducts';
 
-type Props = {|
-  categoryId: string,
-|};
+type Props = {
+  categoryId: number;
+};
 
-type Result = {|
-  products: Array<ProductType>,
-  getCategoryProducts(): void,
-  loading: boolean,
-  refreshing: boolean,
-  refresh(): void,
-  loadMore(): void,
-|};
+type Result = {
+  products: Array<ProductType>;
+  getCategoryProducts(): void;
+  loading: boolean;
+  refreshing: boolean;
+  refresh(): void;
+  loadMore(): void;
+};
 
 const PAGE_SIZE = 10;
 
 export const useCategoryProducts = ({ categoryId }: Props): Result => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const [getCategoryProducts, queryResponse] = useLazyQuery<GetCategoryProductsType>(

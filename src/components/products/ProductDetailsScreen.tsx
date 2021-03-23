@@ -2,8 +2,8 @@
  * @flow
  * Created by Dima Portenko on 23.11.2020
  */
-import React, { useEffect } from 'react';
-import { ActivityIndicator, ScrollView } from 'react-native';
+import React, { ReactNode, useEffect } from 'react';
+import { ActivityIndicator, ScrollView, useWindowDimensions } from 'react-native';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
 import { useRoute } from '@react-navigation/core';
@@ -16,12 +16,15 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TouchableRipple from '../common/TouchableRipple';
 import { useCart } from '../../logic/cart/useCart';
 import { ConfigurableProductOptions } from './options/ConfigurableProductOptions';
-import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
+import { ProductDetailsScreenRouteProp } from '../../navigation/Navigation';
 
-export const ProductDetailsScreen = (): React$Node => {
+type ProductDetailsScreenProps = {
+  route: ProductDetailsScreenRouteProp;
+};
+
+export const ProductDetailsScreen = ({ route }: ProductDetailsScreenProps) => {
   const insets = useSafeAreaInsets();
   const { width: screenWidth } = useWindowDimensions();
-  const route = useRoute();
   const {
     getProductDetails,
     loading,

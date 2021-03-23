@@ -31,26 +31,26 @@ export const GET_CATEGORY_PRODUCTS = gql`
 
 export type GetCategoryProductsType = {
   products: {
-    total_count: number,
-    items: Array<ProductType>,
-  },
+    total_count: number;
+    items: Array<ProductType>;
+  };
 };
 
 export type PriceRange = {
   minimum_price: {
     final_price: {
-      currency: string,
-      value: number,
-    },
-  },
+      currency: string;
+      value: number;
+    };
+  };
 };
 
 export type ProductType = {
-  id: number,
-  name: string,
-  sku: string,
+  id: number;
+  name: string;
+  sku: string;
   small_image: {
-    url: string,
-  },
-  price_range: PriceRange,
+    url: string;
+  };
+  price_range: PriceRange;
 };

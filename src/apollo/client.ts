@@ -19,4 +19,5 @@ export const apolloClient = new ApolloClient({
   },
 });
 
+// @ts-ignore
 enableFlipperApolloDevtools(apolloClient);
