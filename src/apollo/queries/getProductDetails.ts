@@ -71,8 +71,7 @@ export type ProductInterfaceDetailsType = {
   },
 };
 
-export type SimpleProductDetailsType = {
-  ...ProductInterfaceDetailsType,
+export type SimpleProductDetailsType = ProductInterfaceDetailsType & {
   __typename: 'SimpleProduct',
 };
 
@@ -107,8 +106,7 @@ export type ConfigurableProductVariant = {
   product: ConfigurableProductVariantProduct,
 };
 
-export type ConfigurableProductDetailsType = {
-  ...ProductInterfaceDetailsType,
+export type ConfigurableProductDetailsType = ProductInterfaceDetailsType & {
   __typename: 'ConfigurableProduct',
   configurable_options: ConfigurableProductOptionsType[],
   variants: ConfigurableProductVariant[],

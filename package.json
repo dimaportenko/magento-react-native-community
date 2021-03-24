@@ -38,6 +38,10 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.21",
+    "@types/react": "^17.0.3",
+    "@types/react-native": "^0.64.0",
+    "@types/react-test-renderer": "^17.0.1",
     "babel-jest": "^26.6.3",
     "eslint": "^7.14.0",
     "flow-bin": "^0.137.0",
@@ -45,7 +49,8 @@
     "metro-react-native-babel-preset": "^0.64.0",
     "react-native-flipper": "^0.74.0",
     "react-native-flipper-apollo-devtools": "^0.0.2",
-    "react-test-renderer": "17.0.1"
+    "react-test-renderer": "17.0.1",
+    "typescript": "^4.2.3"
   },
   "jest": {
     "preset": "react-native"

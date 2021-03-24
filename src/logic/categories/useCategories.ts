@@ -7,15 +7,15 @@ import { useLazyQuery } from '@apollo/client';
 import { GET_CATEGORIES } from '../../apollo/queries/getCategory';
 import type { CategoryListType, CategoryType } from '../../apollo/queries/getCategory';
 
-type Props = {|
+type Props = {
   categoryId: string,
-|};
+};
 
-type Result = {|
+type Result = {
   getCategories(): void,
   categories: Array<CategoryType>,
   loading: boolean,
-|};
+};
 
 export const useCategories = (props: Props): Result => {
   const [categories, setCategories] = useState<Array<CategoryType>>([]);

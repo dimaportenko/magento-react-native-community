@@ -10,18 +10,18 @@ import type {
   ProductType,
 } from '../../apollo/queries/getCategoryProducts';
 
-type Props = {|
+type Props = {
   categoryId: string,
-|};
+};
 
-type Result = {|
+type Result = {
   products: Array<ProductType>,
   getCategoryProducts(): void,
   loading: boolean,
   refreshing: boolean,
   refresh(): void,
   loadMore(): void,
-|};
+};
 
 const PAGE_SIZE = 10;
 

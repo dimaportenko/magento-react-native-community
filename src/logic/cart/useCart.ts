@@ -12,19 +12,19 @@ import { getCartId, setCartId } from '../../redux/cart';
 import { ADD_PRODUCTS_TO_CART } from '../../apollo/mutations/addProductsToCart';
 import type { AddProductsToCartResponseType } from '../../apollo/mutations/addProductsToCart';
 
-type Props = {||};
+type Props = {};
 
-type CartPayloadType = {|
+type CartPayloadType = {
   sku: string,
   quantity: number,
   parent_sku?: string,
-|};
+};
 
-type Result = {|
+type Result = {
   cartId: string | null,
   addToCart: (payload: CartPayloadType, name: string) => Promise<void>,
   addProductLoading: boolean,
-|};
+};
 
 export const useCart = (): Result => {
   const cartId = useSelector(getCartId);

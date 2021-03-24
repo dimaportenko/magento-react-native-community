@@ -17,26 +17,26 @@ import { useCart } from '../cart/useCart';
 export type SelectedConfigurableProductOptions = { [key: string]: number };
 export type HandleSelectConfigurableOption = (optionCode: string, valueIndex: number) => void;
 
-type Props = {|
+type Props = {
   sku: string,
-|};
+};
 
-type Result = {|
+type Result = {
   getProductDetails: () => void,
   loading: boolean,
-  productData: ?ProductDetailsType,
+  productData: ProductDetailsType | null,
   selectedConfigurableProductOptions: SelectedConfigurableProductOptions,
   handleSelectConfigurableOption: HandleSelectConfigurableOption,
-  price: ?PriceRange,
+  price: PriceRange | null,
   mediaGallery: MediaGalleryItemType[],
   addProductLoading: boolean,
   addToCart(): void,
-|};
+};
 
 const findSelectProductVariant = (
   selectedConfigurableProductOptions: SelectedConfigurableProductOptions,
   productData: ProductDetailsType,
-): ?ConfigurableProductVariant => {
+): ConfigurableProductVariant | null => {
   if (productData.__typename !== 'ConfigurableProduct') {
     return null;
   }
@@ -52,13 +52,13 @@ const findSelectProductVariant = (
 };
 
 export const useProductDetails = ({ sku }: Props): Result => {
-  const [productData, setProductData] = useState<?ProductDetailsType>(null);
+  const [productData, setProductData] = useState<ProductDetailsType | null>(null);
   const [
     selectedConfigurableProductOptions,
     setSelectedConfigurableProductOptions,
   ] = useState<SelectedConfigurableProductOptions>({});
-  const [selectedVariant, setSelectedVariant] = useState<?ConfigurableProductVariant>(null);
-  const [price, setPrice] = useState<?PriceRange>(null);
+  const [selectedVariant, setSelectedVariant] = useState<ConfigurableProductVariant | null>(null);
+  const [price, setPrice] = useState<PriceRange | null>(null);
   const [mediaGallery, setMediaGallery] = useState<MediaGalleryItemType[]>([]);
 
   const { addToCart, addProductLoading } = useCart();
