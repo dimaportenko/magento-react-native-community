@@ -3,20 +3,24 @@
  * Created by Dima Portenko on 09.11.2020
  */
 import React, { useEffect } from 'react';
-import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
+import { ActivityIndicator, FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
 import View from 'react-native-ui-lib/view';
 import { useCategoryProducts } from '../../logic/products/useCategoryProducts';
-import { useNavigation, useRoute } from '@react-navigation/core';
-import type { ProductType } from '../../apollo/queries/getCategoryProducts';
 import { ProductListItem } from './ProductListItem';
 import * as routes from '../../navigation/routes';
-import type { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
-import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
 import { Spacings } from 'react-native-ui-lib/core';
+import { ProductType } from '../../apollo/queries/getCategoryProducts';
+import {
+  ProductListScreenNavigationProp,
+  ProductListScreenRouteProp,
+} from '../../navigation/Navigation';
 
-export const ProductListScreen = (): React$Node => {
-  const route = useRoute();
-  const navigation = useNavigation();
+type ProductListScreenProps = {
+  route: ProductListScreenRouteProp;
+  navigation: ProductListScreenNavigationProp;
+};
+
+export const ProductListScreen = ({ route, navigation }: ProductListScreenProps) => {
   const { loading, products, loadMore, refreshing, refresh } = useCategoryProducts({
     categoryId: route?.params?.categoryId,
   });
@@ -28,7 +32,7 @@ export const ProductListScreen = (): React$Node => {
     });
   };
 
-  const renderItem = ({ item, index }: RenderItemProps<ProductType>) => {
+  const renderItem = ({ item, index }: ListRenderItemInfo<ProductType>) => {
     return <ProductListItem item={item} index={index} onPress={onProductItemPress} />;
   };
 

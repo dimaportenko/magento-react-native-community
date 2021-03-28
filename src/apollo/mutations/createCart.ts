@@ -11,5 +11,5 @@ export const CREATE_CART = gql`
 `;
 
 export type CreateCartResponseType = {
-  cartId: string,
+  cartId: string;
 };

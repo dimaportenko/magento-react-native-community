@@ -13,16 +13,16 @@ import Text from 'react-native-ui-lib/text';
 import { ConfigurableOptionValues } from './ConfigurableOptionValues';
 
 type Props = {
-  options: ConfigurableProductOptionsType[],
-  selectedConfigurableProductOptions: SelectedConfigurableProductOptions,
-  handleSelectConfigurableOption: HandleSelectConfigurableOption,
+  options: ConfigurableProductOptionsType[];
+  selectedConfigurableProductOptions: SelectedConfigurableProductOptions;
+  handleSelectConfigurableOption: HandleSelectConfigurableOption;
 };
 
 export const ConfigurableProductOptions = ({
   options,
   selectedConfigurableProductOptions,
   handleSelectConfigurableOption,
-}: Props): React$Node => {
+}: Props) => {
   const renderOption = (option: ConfigurableProductOptionsType) => {
     return (
       <View key={option.attribute_code}>

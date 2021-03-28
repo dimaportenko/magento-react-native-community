@@ -3,22 +3,27 @@
  * Created by Dima Portenko on 06.10.2020
  */
 import React, { useEffect } from 'react';
-import { FlatList, RefreshControl, ActivityIndicator } from 'react-native';
+import { FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
 import View from 'react-native-ui-lib/view';
 import { useCategories } from '../../logic/categories/useCategories';
-import type { CategoryType } from '../../apollo/queries/getCategory';
-import { useNavigation, useRoute } from '@react-navigation/core';
 import * as routes from '../../navigation/routes';
 import { CategoryListItem } from './CategoryListItem';
 import { useCategoryColors } from '../../logic/categories/useCategoryColors';
-import type { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
+import { CategoryType } from '../../apollo/queries/getCategory';
+import {
+  CategoriesScreenRouteProp,
+  CategoriesScreenNavigationProp,
+} from '../../navigation/Navigation';
 
-export const CategoriesScreen = (): React$Node => {
+type CategoriesScreenProps = {
+  route: CategoriesScreenRouteProp;
+  navigation: CategoriesScreenNavigationProp;
+};
+
+export const CategoriesScreen = ({ route, navigation }: CategoriesScreenProps) => {
   const { getCategoryColorByIndex } = useCategoryColors();
-  const route = useRoute();
-  const navigation = useNavigation();
   const { getCategories, categories, loading } = useCategories({
-    categoryId: route?.params?.categoryId ?? '2',
+    categoryId: route?.params?.categoryId ?? 2,
   });
 
   useEffect(() => {
@@ -39,7 +44,7 @@ export const CategoriesScreen = (): React$Node => {
     }
   };
 
-  const renderItem = ({ item, index }: RenderItemProps<CategoryType>) => {
+  const renderItem = ({ item, index }: ListRenderItemInfo<CategoryType>) => {
     return (
       <CategoryListItem
         item={item}
@@ -55,7 +60,7 @@ export const CategoriesScreen = (): React$Node => {
       <FlatList
         contentContainerStyle={{ paddingTop: 15 }}
         data={categories}
-        keyExtractor={(item) => `categoryItem${item.id.toString()}`}
+        keyExtractor={item => `categoryItem${item.id.toString()}`}
         renderItem={renderItem}
         refreshControl={<RefreshControl refreshing={loading} onRefresh={getCategories} />}
       />

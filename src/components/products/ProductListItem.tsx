@@ -7,19 +7,19 @@ import { Image, StyleSheet, useWindowDimensions } from 'react-native';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
 import { Spacings } from 'react-native-ui-lib/core';
-import type { ProductType } from '../../apollo/queries/getCategoryProducts';
 import { TouchableScale } from '../common/TouchableScale';
 import { AnimatedAppearance } from '../common/AnimatedAppearance';
 import { priceStringFromPriceRange } from '../../logic/util/price';
 import { Shadows } from '../../theme/shadows';
+import { ProductType } from '../../apollo/queries/getCategoryProducts';
 
 type Props = {
-  item: ProductType,
-  index: number,
-  onPress(item: ProductType): void,
+  item: ProductType;
+  index: number;
+  onPress(item: ProductType): void;
 };
 
-export const ProductListItem = ({ item, index, onPress }: Props): React$Node => {
+export const ProductListItem = ({ item, index, onPress }: Props) => {
   const { width: screenWidth } = useWindowDimensions();
   const COLUMN_SIZE = screenWidth / 2 - Spacings.s2 * 3;
 

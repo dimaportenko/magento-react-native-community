@@ -4,29 +4,29 @@
  */
 import React, { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { GET_CATEGORY_PRODUCTS } from '../../apollo/queries/getCategoryProducts';
-import type {
+import {
+  GET_CATEGORY_PRODUCTS,
   GetCategoryProductsType,
   ProductType,
 } from '../../apollo/queries/getCategoryProducts';
 
 type Props = {
-  categoryId: string,
+  categoryId: number;
 };
 
 type Result = {
-  products: Array<ProductType>,
-  getCategoryProducts(): void,
-  loading: boolean,
-  refreshing: boolean,
-  refresh(): void,
-  loadMore(): void,
+  products: Array<ProductType>;
+  getCategoryProducts(): void;
+  loading: boolean;
+  refreshing: boolean;
+  refresh(): void;
+  loadMore(): void;
 };
 
 const PAGE_SIZE = 10;
 
 export const useCategoryProducts = ({ categoryId }: Props): Result => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const [getCategoryProducts, queryResponse] = useLazyQuery<GetCategoryProductsType>(

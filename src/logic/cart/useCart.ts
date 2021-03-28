@@ -5,45 +5,42 @@
 import React, { useState, useEffect } from 'react';
 import { ApolloError, useMutation } from '@apollo/client';
 import { showMessage } from 'react-native-flash-message';
-import { CREATE_CART } from '../../apollo/mutations/createCart';
-import type { CreateCartResponseType } from '../../apollo/mutations/createCart';
+import { CreateCartResponseType, CREATE_CART } from '../../apollo/mutations/createCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartId, setCartId } from '../../redux/cart';
-import { ADD_PRODUCTS_TO_CART } from '../../apollo/mutations/addProductsToCart';
-import type { AddProductsToCartResponseType } from '../../apollo/mutations/addProductsToCart';
+import {
+  ADD_PRODUCTS_TO_CART,
+  AddProductsToCartResponseType,
+} from '../../apollo/mutations/addProductsToCart';
 
 type Props = {};
 
 type CartPayloadType = {
-  sku: string,
-  quantity: number,
-  parent_sku?: string,
+  sku: string;
+  quantity: number;
+  parent_sku?: string;
 };
 
 type Result = {
-  cartId: string | null,
-  addToCart: (payload: CartPayloadType, name: string) => Promise<void>,
-  addProductLoading: boolean,
+  cartId: string | null;
+  addToCart: (payload: CartPayloadType, name: string) => Promise<void>;
+  addProductLoading: boolean;
 };
 
 export const useCart = (): Result => {
   const cartId = useSelector(getCartId);
   const dispatch = useDispatch();
 
-  const [fetchCartId] = useMutation(CREATE_CART);
-  const [addProductsToCart, { loading: addProductLoading }] = useMutation(ADD_PRODUCTS_TO_CART);
+  const [fetchCartId] = useMutation<CreateCartResponseType>(CREATE_CART);
+  const [addProductsToCart, { loading: addProductLoading }] = useMutation<
+    AddProductsToCartResponseType
+  >(ADD_PRODUCTS_TO_CART);
 
   const createCart = async () => {
     try {
-      const {
-        data,
-        errors,
-      }: {
-        data: CreateCartResponseType,
-        errors: ApolloError[],
-      } = await fetchCartId();
+      const { data, errors } = await fetchCartId();
 
-      dispatch(setCartId(data.cartId));
+      dispatch(setCartId(data?.cartId));
     } catch (error) {
       console.log(error);
     }
@@ -51,20 +48,14 @@ export const useCart = (): Result => {
 
   const addToCart = async (payload: CartPayloadType, name: string) => {
     try {
-      const {
-        data,
-        errors,
-      }: {
-        data: AddProductsToCartResponseType,
-        errors: ApolloError[],
-      } = await addProductsToCart({
+      const { data, errors } = await addProductsToCart({
         variables: {
           cartId,
           ...payload,
         },
       });
 
-      if (data.addProductsToCart.user_errors.length > 0) {
+      if (data && data.addProductsToCart.user_errors.length > 0) {
         showMessage({
           message: 'Error',
           description: data.addProductsToCart.user_errors[0].message,

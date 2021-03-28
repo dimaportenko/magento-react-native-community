@@ -4,33 +4,33 @@
  */
 import React, { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { GET_PRODUCT_DETAILS } from '../../apollo/queries/getProductDetails';
-import type {
+import {
   ConfigurableProductVariant,
+  GET_PRODUCT_DETAILS,
   ProductDetailsResponseType,
   ProductDetailsType,
 } from '../../apollo/queries/getProductDetails';
-import type { PriceRange } from '../../apollo/queries/getCategoryProducts';
-import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
 import { useCart } from '../cart/useCart';
+import { PriceRange } from '../../apollo/queries/getCategoryProducts';
+import { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
 
 export type SelectedConfigurableProductOptions = { [key: string]: number };
 export type HandleSelectConfigurableOption = (optionCode: string, valueIndex: number) => void;
 
 type Props = {
-  sku: string,
+  sku: string;
 };
 
 type Result = {
-  getProductDetails: () => void,
-  loading: boolean,
-  productData: ProductDetailsType | null,
-  selectedConfigurableProductOptions: SelectedConfigurableProductOptions,
-  handleSelectConfigurableOption: HandleSelectConfigurableOption,
-  price: PriceRange | null,
-  mediaGallery: MediaGalleryItemType[],
-  addProductLoading: boolean,
-  addToCart(): void,
+  getProductDetails: () => void;
+  loading: boolean;
+  productData: ProductDetailsType | null | undefined;
+  selectedConfigurableProductOptions: SelectedConfigurableProductOptions;
+  handleSelectConfigurableOption: HandleSelectConfigurableOption;
+  price: PriceRange | null;
+  mediaGallery: MediaGalleryItemType[];
+  addProductLoading: boolean;
+  addToCart(): void;
 };
 
 const findSelectProductVariant = (
@@ -41,9 +41,9 @@ const findSelectProductVariant = (
     return null;
   }
   let variants = productData.variants;
-  Object.keys(selectedConfigurableProductOptions).forEach((code) => {
-    variants = variants.filter((variant) => {
-      const attribute = variant.attributes.find((attr) => attr.code === code);
+  Object.keys(selectedConfigurableProductOptions).forEach(code => {
+    variants = variants.filter(variant => {
+      const attribute = variant.attributes.find(attr => attr.code === code);
       return attribute?.value_index === selectedConfigurableProductOptions[code];
     });
   });
@@ -52,11 +52,10 @@ const findSelectProductVariant = (
 };
 
 export const useProductDetails = ({ sku }: Props): Result => {
-  const [productData, setProductData] = useState<ProductDetailsType | null>(null);
-  const [
-    selectedConfigurableProductOptions,
-    setSelectedConfigurableProductOptions,
-  ] = useState<SelectedConfigurableProductOptions>({});
+  const [productData, setProductData] = useState<ProductDetailsType | null | undefined>(null);
+  const [selectedConfigurableProductOptions, setSelectedConfigurableProductOptions] = useState<
+    SelectedConfigurableProductOptions
+  >({});
   const [selectedVariant, setSelectedVariant] = useState<ConfigurableProductVariant | null>(null);
   const [price, setPrice] = useState<PriceRange | null>(null);
   const [mediaGallery, setMediaGallery] = useState<MediaGalleryItemType[]>([]);

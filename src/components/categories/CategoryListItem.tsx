@@ -2,8 +2,8 @@
  * @flow
  * Created by Dima Portenko on 04.11.2020
  */
-import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, Image, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet } from 'react-native';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
 import type { CategoryType } from '../../apollo/queries/getCategory';
@@ -12,15 +12,15 @@ import { AnimatedAppearance } from '../common/AnimatedAppearance';
 import { Shadows } from '../../theme/shadows';
 
 type Props = {
-  item: CategoryType,
-  onPress(item: CategoryType): void,
-  color: string,
-  index: number,
+  item: CategoryType;
+  onPress(item: CategoryType): void;
+  color: string;
+  index: number;
 };
 
 const ITEM_HEIGHT = 80;
 
-export const CategoryListItem = ({ item, onPress, color, index }: Props): React$Node => {
+export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
   const [disabled] = useState(item.children_count < 1 && item.product_count < 1);
 
   const renderText = () => (

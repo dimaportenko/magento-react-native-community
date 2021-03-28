@@ -61,62 +61,62 @@ export const GET_PRODUCT_DETAILS = gql`
 `;
 
 export type ProductInterfaceDetailsType = {
-  id: number,
-  sku: string,
-  name: string,
-  media_gallery: Array<MediaGalleryItemType>,
-  price_range: PriceRange,
+  id: number;
+  sku: string;
+  name: string;
+  media_gallery: Array<MediaGalleryItemType>;
+  price_range: PriceRange;
   description: {
-    html: string,
-  },
+    html: string;
+  };
 };
 
 export type SimpleProductDetailsType = ProductInterfaceDetailsType & {
-  __typename: 'SimpleProduct',
+  __typename: 'SimpleProduct';
 };
 
 export type ConfigurableProductOptionValueType = {
-  label: string,
-  value_index: number,
+  label: string;
+  value_index: number;
   swatch_data: {
-    value: string,
-    __typename: 'ImageSwatchData' | 'TextSwatchData' | 'ColorSwatchData',
-  },
+    value: string;
+    __typename: 'ImageSwatchData' | 'TextSwatchData' | 'ColorSwatchData';
+  };
 };
 
 export type ConfigurableProductOptionsType = {
-  attribute_code: string,
-  label: string,
-  values: ConfigurableProductOptionValueType[],
+  attribute_code: string;
+  label: string;
+  values: ConfigurableProductOptionValueType[];
 };
 
 export type ConfigurableProductVariantAttribute = {
-  code: string,
-  value_index: number,
+  code: string;
+  value_index: number;
 };
 
 export type ConfigurableProductVariantProduct = {
-  sku: string,
-  media_gallery: Array<MediaGalleryItemType>,
-  price_range: PriceRange,
+  sku: string;
+  media_gallery: Array<MediaGalleryItemType>;
+  price_range: PriceRange;
 };
 
 export type ConfigurableProductVariant = {
-  attributes: ConfigurableProductVariantAttribute[],
-  product: ConfigurableProductVariantProduct,
+  attributes: ConfigurableProductVariantAttribute[];
+  product: ConfigurableProductVariantProduct;
 };
 
 export type ConfigurableProductDetailsType = ProductInterfaceDetailsType & {
-  __typename: 'ConfigurableProduct',
-  configurable_options: ConfigurableProductOptionsType[],
-  variants: ConfigurableProductVariant[],
+  __typename: 'ConfigurableProduct';
+  configurable_options: ConfigurableProductOptionsType[];
+  variants: ConfigurableProductVariant[];
 };
 
 export type ProductDetailsType = SimpleProductDetailsType | ConfigurableProductDetailsType;
 
 export type ProductDetailsResponseType = {
   products: {
-    total_count: number,
-    items: Array<ProductDetailsType>,
-  },
+    total_count: number;
+    items: Array<ProductDetailsType>;
+  };
 };

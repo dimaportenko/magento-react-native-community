@@ -2,41 +2,30 @@
  * @flow
  * Created by Dima Portenko on 03.01.2021
  */
-import React, { Children, useState } from 'react';
+import React, { Children, ReactElement, useState } from 'react';
 import { State, TapGestureHandler } from 'react-native-gesture-handler';
 import Animated, {
-  and,
   call,
   cond,
   diff,
   eq,
-  greaterOrEq,
   greaterThan,
-  neq,
   onChange,
   or,
   useCode,
 } from 'react-native-reanimated';
 import { StyleSheet, View } from 'react-native';
-import {
-  mix,
-  translate,
-  useDebug,
-  useTapGestureHandler,
-  vec,
-  withTransition,
-} from 'react-native-redash';
-import Color from 'color';
+import { mix, translate, useTapGestureHandler, vec, withTransition } from 'react-native-redash';
 
 type RippleButtonProps = {
-  children: React$Node,
-  color: string,
-  rippleColor: string,
-  onPress?: () => void,
-  enabled: boolean,
+  children: ReactElement;
+  color: string;
+  rippleColor: string;
+  onPress?: () => void;
+  enabled: boolean;
 };
 
-const TouchableRipple = ({ children, color, onPress, rippleColor, enabled }: RippleButtonProps): React$Node => {
+const TouchableRipple = ({ children, color, onPress, rippleColor, enabled }: RippleButtonProps) => {
   const [radius, setRadius] = useState(-1);
   const { gestureHandler, position, state } = useTapGestureHandler();
   const child = Children.only(children);

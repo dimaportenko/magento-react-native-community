@@ -2,7 +2,7 @@
  * @flow
  * Created by Dima Portenko on 06.11.2020
  */
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -13,11 +13,11 @@ import Animated, {
 } from 'react-native-reanimated';
 
 type Props = {
-  children: React$Node,
-  index?: number,
+  children: ReactElement;
+  index?: number;
 };
 
-export const AnimatedAppearance = ({ children, index }: Props): React$Node => {
+export const AnimatedAppearance = ({ children, index }: Props) => {
   const play = useSharedValue(false);
   const progress = useDerivedValue(() => {
     return play.value ? withDelay(50 * (index ?? 0), withTiming(1, { duration: 350 })) : 0;

@@ -2,7 +2,7 @@
  * @flow
  * Created by Dima Portenko on 06.11.2020
  */
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -14,15 +14,15 @@ import Animated, {
 } from 'react-native-reanimated';
 
 type Props = {
-  children: React$Node,
-  onPress(): void,
-  scaleTo?: number,
-  disabled?: boolean,
+  children: ReactElement;
+  onPress(): void;
+  scaleTo?: number;
+  disabled?: boolean;
 };
 
 const TimingConfig = { duration: 50 };
 
-export const TouchableScale = ({ onPress, children, scaleTo = 0.97, disabled = false }: Props): React$Node => {
+export const TouchableScale = ({ onPress, children, scaleTo = 0.97, disabled = false }: Props) => {
   const pressed = useSharedValue(false);
   const progress = useDerivedValue(() => {
     return pressed.value ? withTiming(1, TimingConfig) : withTiming(0, TimingConfig);

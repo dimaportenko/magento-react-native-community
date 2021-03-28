@@ -8,13 +8,13 @@ import { GET_CATEGORIES } from '../../apollo/queries/getCategory';
 import type { CategoryListType, CategoryType } from '../../apollo/queries/getCategory';
 
 type Props = {
-  categoryId: string,
+  categoryId: number;
 };
 
 type Result = {
-  getCategories(): void,
-  categories: Array<CategoryType>,
-  loading: boolean,
+  getCategories(): void;
+  categories: Array<CategoryType>;
+  loading: boolean;
 };
 
 export const useCategories = (props: Props): Result => {

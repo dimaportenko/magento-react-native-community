@@ -12,10 +12,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import type { HandleSelectConfigurableOption } from '../../../logic/products/useProductDetails';
 
 type Props = {
-  values: ConfigurableProductOptionValueType[],
-  optionCode: string,
-  selectedIndex: number,
-  handleSelectConfigurableOption: HandleSelectConfigurableOption,
+  values: ConfigurableProductOptionValueType[];
+  optionCode: string;
+  selectedIndex: number;
+  handleSelectConfigurableOption: HandleSelectConfigurableOption;
 };
 
 export const ConfigurableOptionValues = ({
@@ -23,7 +23,7 @@ export const ConfigurableOptionValues = ({
   selectedIndex,
   handleSelectConfigurableOption,
   optionCode,
-}: Props): React$Node => {
+}: Props) => {
   const renderValue = (value: ConfigurableProductOptionValueType) => {
     const selected = selectedIndex === value.value_index;
     switch (value.swatch_data.__typename) {

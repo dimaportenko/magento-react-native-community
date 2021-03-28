@@ -28,16 +28,16 @@ export type AddProductsToCartResponseType = {
   addProductsToCart: {
     cart: {
       items: {
-        id: string,
+        id: string;
         product: {
-          name: string,
-          sku: string,
-        },
-        quantity: number,
-      },
-    },
+          name: string;
+          sku: string;
+        };
+        quantity: number;
+      };
+    };
     user_errors: Array<{
-      message: string,
-    }>,
-  },
+      message: string;
+    }>;
+  };
 };

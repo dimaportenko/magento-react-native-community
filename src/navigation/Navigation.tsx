@@ -3,15 +3,55 @@
  * Created by Dima Portenko on 06.10.2020
  */
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer, RouteProp } from '@react-navigation/native';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { CategoriesScreen } from '../components/categories/CategoriesScreen';
 import * as routes from './routes';
 import { ProductListScreen } from '../components/products/ProductListScreen';
 import { ProductDetailsScreen } from '../components/products/ProductDetailsScreen';
 import { useCart } from '../logic/cart/useCart';
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+  [routes.NAVIGATION_CATEGORIES_ROUTE]: {
+    categoryId: number | undefined;
+    title: string;
+  };
+  [routes.NAVIGATION_PRODUCT_DETAILS_ROUTE]: {
+    sku: string;
+    title: string;
+  };
+  [routes.NAVIGATION_PRODUCTS_ROUTE]: {
+    categoryId: number;
+    title: string;
+  };
+};
+
+export type CategoriesScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  typeof routes.NAVIGATION_CATEGORIES_ROUTE
+>;
+
+export type CategoriesScreenRouteProp = RouteProp<
+  RootStackParamList,
+  typeof routes.NAVIGATION_CATEGORIES_ROUTE
+>;
+
+export type ProductListScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  typeof routes.NAVIGATION_PRODUCTS_ROUTE
+>;
+
+export type ProductListScreenRouteProp = RouteProp<
+  RootStackParamList,
+  typeof routes.NAVIGATION_PRODUCTS_ROUTE
+>;
+
+export type ProductDetailsScreenRouteProp = RouteProp<
+  RootStackParamList,
+  typeof routes.NAVIGATION_PRODUCT_DETAILS_ROUTE
+>;
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
   const { cartId } = useCart();
@@ -47,7 +87,7 @@ const RootStack = () => {
   );
 };
 
-export const Navigation = (): React$Node => {
+export const Navigation = () => {
   return (
     <NavigationContainer>
       <RootStack />

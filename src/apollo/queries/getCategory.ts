@@ -4,7 +4,6 @@
  */
 
 import { gql } from '@apollo/client';
-import { ProductDetailsType } from "./getProductDetails";
 
 export const GET_CATEGORIES = gql`
   query GetCategories($id: String!) {
@@ -29,27 +28,27 @@ export const GET_CATEGORIES = gql`
 `;
 
 export type CategoryListType = {
-  categoryList: Array<CategoryListNodeType>,
+  categoryList: Array<CategoryListNodeType>;
 };
 
 export type CategoryListNodeType = {
-  id: number,
-  children: Array<CategoryType>,
+  id: number;
+  children: Array<CategoryType>;
 };
 
 type CategoryProductPreviwImageType = {
   items: Array<{
     small_image: {
-      url: string | null,
-    },
-  }>,
+      url: string | null;
+    };
+  }>;
 };
 
 export type CategoryType = {
-  id: number,
-  name: string,
-  product_count: number,
-  children_count: number,
-  image: string | null,
-  productPreviewImage: CategoryProductPreviwImageType,
+  id: number;
+  name: string;
+  product_count: number;
+  children_count: number;
+  image: string | null;
+  productPreviewImage: CategoryProductPreviwImageType;
 };

@@ -8,11 +8,11 @@ import { getCategoryColors } from '../../theme/colors';
 type Props = {};
 
 type Result = {
-  getCategoryColorByIndex(index: number): string,
+  getCategoryColorByIndex(index: number): string;
 };
 
 export const useCategoryColors = (): Result => {
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useState<string[]>([]);
 
   useEffect(() => {
     setColors(getCategoryColors());

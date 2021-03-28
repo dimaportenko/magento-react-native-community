@@ -3,22 +3,27 @@
  * Created by Dima Portenko on 27.11.2020
  */
 import React, { useState } from 'react';
-import { FlatList, Image } from 'react-native';
+import {
+  FlatList,
+  Image,
+  ListRenderItemInfo,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  useWindowDimensions,
+} from 'react-native';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
-import type { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
-import type { RenderItemProps } from 'react-native/Libraries/Lists/VirtualizedList';
-import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
+import { MediaGalleryItemType } from '../../apollo/queries/mediaGalleryFragment';
 
 type Props = {
-  items: Array<MediaGalleryItemType>,
+  items: Array<MediaGalleryItemType>;
 };
 
-export const MediaGallery = ({ items }: Props): React$Node => {
+export const MediaGallery = ({ items }: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { width: screenWidth } = useWindowDimensions();
 
-  const renderItem = ({ item, index }: RenderItemProps<MediaGalleryItemType>) => {
+  const renderItem = ({ item }: ListRenderItemInfo<MediaGalleryItemType>) => {
     return (
       <View bg-white>
         <Image
@@ -33,7 +38,7 @@ export const MediaGallery = ({ items }: Props): React$Node => {
     );
   };
 
-  const onMomentumScrollEnd = event => {
+  const onMomentumScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffset = event.nativeEvent.contentOffset.x;
     const width = event.nativeEvent.layoutMeasurement.width;
 
