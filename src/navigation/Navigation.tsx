@@ -10,6 +10,8 @@ import * as routes from './routes';
 import { ProductListScreen } from '../components/products/ProductListScreen';
 import { ProductDetailsScreen } from '../components/products/ProductDetailsScreen';
 import { useCart } from '../logic/cart/useCart';
+import { HeaderCartButton } from '../components/cart/HeaderCartButton';
+import { CartScreen } from '../components/cart/CartScreen';
 
 export type RootStackParamList = {
   [routes.NAVIGATION_CATEGORIES_ROUTE]: {
@@ -24,6 +26,7 @@ export type RootStackParamList = {
     categoryId: number;
     title: string;
   };
+  [routes.NAVIGATION_CART_ROUTE]: {};
 };
 
 export type CategoriesScreenNavigationProp = StackNavigationProp<
@@ -61,6 +64,7 @@ const RootStack = () => {
       screenOptions={() => ({
         headerBackTitleVisible: false,
         headerTintColor: 'black',
+        headerRight: props => <HeaderCartButton {...props} />,
       })}>
       <Stack.Screen
         name={routes.NAVIGATION_CATEGORIES_ROUTE}
@@ -81,6 +85,14 @@ const RootStack = () => {
         component={ProductDetailsScreen}
         options={({ navigation, route }) => ({
           title: route?.params?.title ?? 'Product Details',
+        })}
+      />
+      <Stack.Screen
+        name={routes.NAVIGATION_CART_ROUTE}
+        component={CartScreen}
+        options={({ navigation, route }) => ({
+          title: 'Cart Details',
+          headerRight: () => null,
         })}
       />
     </Stack.Navigator>
