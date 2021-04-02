@@ -27,13 +27,15 @@ export const GET_CART_DETAILS = gql`
   ${PRODUCT_PRICE_FRAGMENT}
 `;
 
+export type CartDetailsItemType = {
+  product: ProductType;
+};
+
 export type CartDetailsResponseType = {
-  items: {
-    products: {
-      items: Array<ProductType>;
-    };
+  cart: {
+    items: CartDetailsItemType[];
+    total_quantity: number;
   };
-  total_quantity: number;
 };
 
 export type CartProductProductType = {

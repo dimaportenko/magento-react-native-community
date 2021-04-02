@@ -48,6 +48,7 @@ export const useCart = (): Result => {
 
   const addToCart = async (payload: CartPayloadType, name: string) => {
     try {
+      console.log({ payload });
       const { data, errors } = await addProductsToCart({
         variables: {
           cartId,
