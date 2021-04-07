@@ -15,7 +15,8 @@ import Animated, {
   useCode,
 } from 'react-native-reanimated';
 import { StyleSheet, View } from 'react-native';
-import { mix, translate, useTapGestureHandler, vec, withTransition } from 'react-native-redash';
+import { mix, translate, useTapGestureHandler, vec } from 'react-native-redash';
+import { withTransition } from './util/Transitions';
 
 type RippleButtonProps = {
   children: ReactElement;
