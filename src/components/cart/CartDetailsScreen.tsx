@@ -15,6 +15,7 @@ import { CartDetailItemType } from '../../apollo/queries/cartItemsFragment';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TouchableScale } from '../common/TouchableScale';
+import { AnimatedAppearance } from '../common/AnimatedAppearance';
 
 interface CartDetailsScreenProps {}
 
@@ -41,47 +42,47 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
 
   const onItemPress = (item: CartDetailItemType) => {};
 
-  const renderItem: ListRenderItem<CartDetailItemType> = ({ item }) => {
+  const renderItem: ListRenderItem<CartDetailItemType> = ({ item, index }) => {
+    const isLast = index === cartItems.length - 1;
     return (
-      <View row marginH-15 paddingV-10>
-        <View bg-white br30 padding-5 style={{ overflow: 'hidden' }}>
-          <Image
-            source={{ uri: item.product.image.url }}
-            resizeMode="contain"
-            style={{
-              height: 80,
-              width: 80,
-              backgroundColor: 'white',
-            }}
-          />
+      <AnimatedAppearance index={index}>
+        <View
+          row
+          marginH-15
+          paddingV-10
+          style={{ borderBottomColor: 'rgba(0, 0, 0, 0.1)', borderBottomWidth: isLast ? 0 : 1 }}>
+          <View bg-white br30 padding-5 style={{ overflow: 'hidden' }}>
+            <Image
+              source={{ uri: item.product.image.url }}
+              resizeMode="contain"
+              style={{
+                height: 80,
+                width: 80,
+                backgroundColor: 'white',
+              }}
+            />
+          </View>
+          <View spread paddingL-10 paddingV-5 style={{ maxWidth: width - 90 - 50 - 30 }}>
+            <Text numberOfLines={2}>{item.product.name}</Text>
+            <Text>{`${item.prices.price.value} ${item.prices.price.currency}`}</Text>
+            <Text>{`qty: ${item.quantity}`}</Text>
+          </View>
+          <View flex />
+          <View center>
+            <TouchableScale onPress={() => onItemPress(item)} scaleTo={0.93}>
+              <View paddingH-15>
+                <Icon name="trash" color="black" size={20} />
+              </View>
+            </TouchableScale>
+          </View>
         </View>
-        <View spread paddingL-10 paddingV-5 style={{ maxWidth: width - 90 - 50 - 30 }}>
-          <Text numberOfLines={2}>{item.product.name}</Text>
-          <Text>{`${item.prices.price.value} ${item.prices.price.currency}`}</Text>
-          <Text>{`qty: ${item.quantity}`}</Text>
-        </View>
-        <View flex />
-        <View center>
-          <TouchableScale onPress={() => onItemPress(item)} scaleTo={0.93}>
-            <View paddingH-15>
-              <Icon name="trash" color="black" size={20} />
-            </View>
-          </TouchableScale>
-        </View>
-      </View>
+      </AnimatedAppearance>
     );
   };
 
   return (
     <View flex>
-      <FlatList
-        data={cartItems}
-        renderItem={renderItem}
-        keyExtractor={item => item.product.sku}
-        ItemSeparatorComponent={() => (
-          <View height={1} backgroundColor="rgba(0, 0, 0, 0.1)" marginH-15 />
-        )}
-      />
+      <FlatList data={cartItems} renderItem={renderItem} keyExtractor={item => item.product.sku} />
       <View width="100%" bg-white padding-15 right style={{ paddingBottom: insets.bottom }}>
         <Text>{`Totals: ${totals?.grand_total.value} ${totals?.grand_total.currency}`}</Text>
       </View>
