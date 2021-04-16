@@ -16,6 +16,9 @@ export const CART_DETAIL_ITEMS_FRAGMENT = gql`
       product {
         sku
         name
+        image {
+          url
+        }
       }
       quantity
 
@@ -39,6 +42,9 @@ export type CartDetailItemType = {
   product: {
     sku: string;
     name: string;
+    image: {
+      url: string;
+    };
   };
   quantity: number;
 
