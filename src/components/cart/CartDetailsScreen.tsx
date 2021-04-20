@@ -1,7 +1,7 @@
 /**
  * Created by Dima Portenko on 02.04.2021
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native-ui-lib';
 import { useCartDetails } from '../../logic/cart/useCartDetails';
 import { ActivityIndicator, FlatList, Image, ListRenderItem } from 'react-native';
@@ -14,7 +14,15 @@ import { AnimatedAppearance } from '../common/AnimatedAppearance';
 interface CartDetailsScreenProps {}
 
 export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
-  const { getCartDetails, loading, cartItems, totals } = useCartDetails();
+  const [removeItemUid, setRemoveItemUid] = useState('');
+  const {
+    getCartDetails,
+    loading,
+    cartItems,
+    totals,
+    removeFromCart,
+    removeItemLoading,
+  } = useCartDetails();
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
@@ -33,7 +41,10 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
     );
   }
 
-  const onCartItemPress = () => {};
+  const onRemoveCartItemPress = (item: CartDetailItemType) => {
+    setRemoveItemUid(item.uid);
+    removeFromCart(item.uid);
+  };
 
   const renderCartItem: ListRenderItem<CartDetailItemType> = ({ item, index }) => {
     const isLast = cartItems.length - 1 === index;
@@ -56,9 +67,13 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
             </View>
 
             <View center>
-              <TouchableScale onPress={onCartItemPress} scaleTo={0.93}>
+              <TouchableScale onPress={() => onRemoveCartItemPress(item)} scaleTo={0.93}>
                 <View paddingH-15>
-                  <Icon name="trash" color="black" size={20} />
+                  {removeItemLoading && item.uid === removeItemUid ? (
+                    <ActivityIndicator size="small" />
+                  ) : (
+                    <Icon name="trash" color="black" size={20} />
+                  )}
                 </View>
               </TouchableScale>
             </View>

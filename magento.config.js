@@ -6,5 +6,6 @@
 module.exports = {
   magentoConfig: {
     url: 'https://master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud/',
+    // url: 'http://imall.com.ph/',
   },
 };
