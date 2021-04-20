@@ -7,6 +7,7 @@ import { gql } from '@apollo/client';
 export const CART_DETAIL_ITEMS_FRAGMENT = gql`
   fragment CartDetailItems on Cart {
     items {
+      uid
       prices {
         price {
           currency
@@ -29,10 +30,24 @@ export const CART_DETAIL_ITEMS_FRAGMENT = gql`
         }
       }
     }
+    prices {
+      grand_total {
+        currency
+        value
+      }
+    }
   }
 `;
 
+export type CartDetailTotals = {
+  grand_total: {
+    currency: string;
+    value: number;
+  };
+};
+
 export type CartDetailItemType = {
+  uid: string;
   prices: {
     price: {
       currency: string;
