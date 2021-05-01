@@ -10,6 +10,7 @@ import type { CategoryType } from '../../apollo/queries/getCategory';
 import { TouchableScale } from '../common/TouchableScale';
 import { AnimatedAppearance } from '../common/AnimatedAppearance';
 import { Shadows } from '../../theme/shadows';
+import { fonts } from '../../theme/fonts';
 
 type Props = {
   item: CategoryType;
@@ -25,7 +26,7 @@ export const CategoryListItem = ({ item, onPress, color, index }: Props) => {
 
   const renderText = () => (
     <View flex center>
-      <Text text50L>{item.name}</Text>
+      <Text style={styles.title}>{item.name}</Text>
     </View>
   );
 
@@ -94,5 +95,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 12,
     borderBottomRightRadius: 12,
     overflow: 'hidden',
+  },
+  title: {
+    fontFamily: fonts.SourceSansProLight,
+    fontSize: 24,
   },
 });

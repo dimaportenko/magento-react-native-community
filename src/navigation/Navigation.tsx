@@ -12,6 +12,8 @@ import { ProductDetailsScreen } from '../components/products/ProductDetailsScree
 import { useCart } from '../logic/cart/useCart';
 import { HeaderCartButton } from '../components/cart/HeaderCartButton';
 import { CartDetailsScreen } from '../components/cart/CartDetailsScreen';
+import { fonts } from '../theme/fonts';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 export type RootStackParamList = {
   [routes.NAVIGATION_CATEGORIES_ROUTE]: {
@@ -66,6 +68,12 @@ const RootStack = () => {
       screenOptions={() => ({
         headerBackTitleVisible: false,
         headerTintColor: 'black',
+        headerTitleStyle: {
+          fontSize: 24,
+          fontFamily: fonts.SourceSansProExtraLight,
+          fontWeight: '300',
+        },
+        headerBackImage: () => <Icon name="chevron-left" size={42} />,
         headerRight: () => <HeaderCartButton />,
       })}>
       <Stack.Screen

@@ -3,10 +3,10 @@
  * Created by Dima Portenko on 23.11.2020
  */
 import React, { useEffect } from 'react';
-import { ActivityIndicator, ScrollView, useWindowDimensions } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import { useProductDetails } from '../../logic/products/useProductDetails';
 import { MediaGallery } from '../common/MediaGallery';
 import { priceStringFromPriceRange } from '../../logic/util/price';
@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import TouchableRipple from '../common/TouchableRipple';
 import { ConfigurableProductOptions } from './options/ConfigurableProductOptions';
 import { ProductDetailsScreenRouteProp } from '../../navigation/Navigation';
+import { fonts } from '../../theme/fonts';
 
 type ProductDetailsScreenProps = {
   route: ProductDetailsScreenRouteProp;
@@ -73,10 +74,10 @@ export const ProductDetailsScreen = ({ route }: ProductDetailsScreenProps) => {
       <ScrollView>
         <View flex style={{ paddingBottom: insets.bottom + 50 }}>
           <MediaGallery items={mediaGallery} />
-          <Text marginT-15 text70 center>
+          <Text marginT-15 center style={styles.title}>
             {productData?.name}
           </Text>
-          <Text text70 center>
+          <Text center style={styles.title}>
             {priceStringFromPriceRange(price)}
           </Text>
           {renderOptions()}
@@ -85,7 +86,7 @@ export const ProductDetailsScreen = ({ route }: ProductDetailsScreenProps) => {
               <HTML
                 source={{ html: productData?.description.html }}
                 contentWidth={screenWidth}
-                baseFontStyle={{ fontSize: 15 }}
+                baseFontStyle={{ fontSize: 15, fontFamily: fonts.SourceSansProRegular, lineHeight: 24 }}
               />
             </View>
           )}
@@ -101,7 +102,7 @@ export const ProductDetailsScreen = ({ route }: ProductDetailsScreenProps) => {
             {addProductLoading ? (
               <ActivityIndicator size="small" color="white" />
             ) : (
-              <Icon name="cart" color="white" size={16} />
+              <Icon name="cart" color="white" size={24} />
             )}
             <Text white marginH-7>
               Add To Cart
@@ -113,3 +114,10 @@ export const ProductDetailsScreen = ({ route }: ProductDetailsScreenProps) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  title: {
+    fontFamily: fonts.SourceSansProRegular,
+    fontSize: 18,
+  },
+});

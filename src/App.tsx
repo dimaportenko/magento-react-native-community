@@ -16,10 +16,12 @@ import SplashScreen from 'react-native-splash-screen';
 import { Navigation } from './navigation/Navigation';
 import { apolloClient } from './apollo/client';
 import { persistor, store } from './redux/store';
+import { initTheme } from './theme';
 
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
+    initTheme();
   }, []);
 
   return (
