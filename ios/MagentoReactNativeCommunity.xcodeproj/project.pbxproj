@@ -3,17 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* MagentoReactNativeCommunityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MagentoReactNativeCommunityTests.m */; };
+		01F0AAA5FF444A91BBBEA1BE /* SourceSansPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1106D881992644A6A7D2EDD7 /* SourceSansPro-SemiBoldItalic.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		311B26C5675F203056C736BE /* libPods-MagentoReactNativeCommunity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771655E28C17820FDF149FF6 /* libPods-MagentoReactNativeCommunity.a */; };
+		400AEE3829EF41F8A41524FC /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2710F93F44D14FCDA758C342 /* SourceSansPro-Bold.ttf */; };
+		4237685538504E5DA5CAF277 /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EFA110AEA6D04CEBBF41C768 /* SourceSansPro-SemiBold.ttf */; };
+		47E233A875B34D2CB85A8DFB /* SourceSansPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83ABB2C791374BC38358AA54 /* SourceSansPro-BoldItalic.ttf */; };
+		5865EBFA0F6B4031893717F9 /* SourceSansPro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60262CCBC3C9486DB7F27669 /* SourceSansPro-BlackItalic.ttf */; };
+		6517A1FDA5AA4348A95858C5 /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 298750BFF91A4779BA4226F0 /* SourceSansPro-LightItalic.ttf */; };
+		6A634091089B4E1DA1230BA8 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8441326542473B9413786D /* SourceSansPro-Regular.ttf */; };
+		773CD4BBA16A4E3AB5553CF5 /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98BE2DEC84754CAB81D4E569 /* SourceSansPro-Italic.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		89680754440241F5B5C4D315 /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A315B35F1784279A1F08B09 /* SourceSansPro-Light.ttf */; };
 		90AED669A69BE110A13A8E16 /* libPods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA900437A01E4801A087909 /* libPods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.a */; };
+		A4E5FBA3B9A04A199B5A7312 /* SourceSansPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 098573C08AC64F55B6303C62 /* SourceSansPro-ExtraLight.ttf */; };
+		D6D6FAE5443A41E4A04A2CD2 /* SourceSansPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71156A92FF114F3780EB573F /* SourceSansPro-Black.ttf */; };
+		D9D050890AB24B6E90D411F0 /* SourceSansPro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 077FBBA49FA2432B90CF8D6E /* SourceSansPro-ExtraLightItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,24 +43,52 @@
 		00E356EE1AD99517003FC87E /* MagentoReactNativeCommunityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagentoReactNativeCommunityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MagentoReactNativeCommunityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MagentoReactNativeCommunityTests.m; sourceTree = "<group>"; };
+		077FBBA49FA2432B90CF8D6E /* SourceSansPro-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-ExtraLightItalic.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		098573C08AC64F55B6303C62 /* SourceSansPro-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-ExtraLight.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf"; sourceTree = "<group>"; };
 		10AAE2DFA108DEC2807269CA /* Pods-MagentoReactNativeCommunity-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagentoReactNativeCommunity-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MagentoReactNativeCommunity-tvOS/Pods-MagentoReactNativeCommunity-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1106D881992644A6A7D2EDD7 /* SourceSansPro-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-SemiBoldItalic.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* MagentoReactNativeCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagentoReactNativeCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MagentoReactNativeCommunity/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MagentoReactNativeCommunity/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MagentoReactNativeCommunity/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MagentoReactNativeCommunity/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MagentoReactNativeCommunity/main.m; sourceTree = "<group>"; };
+		25AA0E8E607143BC8A14F3AF /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		2710F93F44D14FCDA758C342 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Bold.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
 		280092CEA73945CBD9AEA7CC /* libPods-MagentoReactNativeCommunity-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MagentoReactNativeCommunity-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		298750BFF91A4779BA4226F0 /* SourceSansPro-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-LightItalic.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf"; sourceTree = "<group>"; };
+		4041606D92124A0585A48DE9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		455E13AC3A6B4E8EA8E604FD /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		60262CCBC3C9486DB7F27669 /* SourceSansPro-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-BlackItalic.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf"; sourceTree = "<group>"; };
+		6B8441326542473B9413786D /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Regular.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		71156A92FF114F3780EB573F /* SourceSansPro-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Black.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-Black.ttf"; sourceTree = "<group>"; };
 		771655E28C17820FDF149FF6 /* libPods-MagentoReactNativeCommunity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MagentoReactNativeCommunity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B8F570FC22E442B8785F183 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		80A7508083E0E0C22970EF32 /* Pods-MagentoReactNativeCommunity-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagentoReactNativeCommunity-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MagentoReactNativeCommunity-tvOS/Pods-MagentoReactNativeCommunity-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MagentoReactNativeCommunity/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		83ABB2C791374BC38358AA54 /* SourceSansPro-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-BoldItalic.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf"; sourceTree = "<group>"; };
+		870A97F622A742E38DEB1495 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		88341688DE31420DAEE5400F /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		8A315B35F1784279A1F08B09 /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Light.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
 		8FB5A93D0F678FDDD661DF1B /* Pods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.debug.xcconfig"; path = "Target Support Files/Pods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests/Pods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.debug.xcconfig"; sourceTree = "<group>"; };
+		922134156A5A4560ABC137AC /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		92BE7215BFCE45A8AD878A47 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		97739534222AD3BCEB51A502 /* Pods-MagentoReactNativeCommunity-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagentoReactNativeCommunity-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MagentoReactNativeCommunity-tvOSTests/Pods-MagentoReactNativeCommunity-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		98BE2DEC84754CAB81D4E569 /* SourceSansPro-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Italic.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf"; sourceTree = "<group>"; };
+		A13DB29A6A4A468E87B4F408 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		AFF598CF23DE42C09712A84C /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		B15A8F5FDDDB4410A6178A1A /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		B23DE4C27A93C3F20C921C93 /* Pods-MagentoReactNativeCommunity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagentoReactNativeCommunity.debug.xcconfig"; path = "Target Support Files/Pods-MagentoReactNativeCommunity/Pods-MagentoReactNativeCommunity.debug.xcconfig"; sourceTree = "<group>"; };
+		BDECC12124754A11B06F5ADB /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		CA94EC1E4C492C334059756E /* Pods-MagentoReactNativeCommunity-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagentoReactNativeCommunity-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MagentoReactNativeCommunity-tvOSTests/Pods-MagentoReactNativeCommunity-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		D367E9F082D744B89A2D43FF /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		D4B940EF5F9340C298667989 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		E36D58D9D724437DBDD40002 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		E714920D1D34F61E0BA8EC43 /* Pods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.release.xcconfig"; path = "Target Support Files/Pods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests/Pods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.release.xcconfig"; sourceTree = "<group>"; };
+		E81350FBF91640A395E4DE0A /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		EFA110AEA6D04CEBBF41C768 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-SemiBold.ttf"; path = "../assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		F066356473281D39F2E61A69 /* Pods-MagentoReactNativeCommunity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagentoReactNativeCommunity.release.xcconfig"; path = "Target Support Files/Pods-MagentoReactNativeCommunity/Pods-MagentoReactNativeCommunity.release.xcconfig"; sourceTree = "<group>"; };
 		FD038BD2CA70773833091F22 /* libPods-MagentoReactNativeCommunity-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MagentoReactNativeCommunity-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA900437A01E4801A087909 /* libPods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MagentoReactNativeCommunity-MagentoReactNativeCommunityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +158,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4D2A91E13E784D2DA375829A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				71156A92FF114F3780EB573F /* SourceSansPro-Black.ttf */,
+				60262CCBC3C9486DB7F27669 /* SourceSansPro-BlackItalic.ttf */,
+				2710F93F44D14FCDA758C342 /* SourceSansPro-Bold.ttf */,
+				83ABB2C791374BC38358AA54 /* SourceSansPro-BoldItalic.ttf */,
+				098573C08AC64F55B6303C62 /* SourceSansPro-ExtraLight.ttf */,
+				077FBBA49FA2432B90CF8D6E /* SourceSansPro-ExtraLightItalic.ttf */,
+				98BE2DEC84754CAB81D4E569 /* SourceSansPro-Italic.ttf */,
+				8A315B35F1784279A1F08B09 /* SourceSansPro-Light.ttf */,
+				298750BFF91A4779BA4226F0 /* SourceSansPro-LightItalic.ttf */,
+				6B8441326542473B9413786D /* SourceSansPro-Regular.ttf */,
+				EFA110AEA6D04CEBBF41C768 /* SourceSansPro-SemiBold.ttf */,
+				1106D881992644A6A7D2EDD7 /* SourceSansPro-SemiBoldItalic.ttf */,
+				25AA0E8E607143BC8A14F3AF /* AntDesign.ttf */,
+				AFF598CF23DE42C09712A84C /* Entypo.ttf */,
+				7B8F570FC22E442B8785F183 /* EvilIcons.ttf */,
+				D4B940EF5F9340C298667989 /* Feather.ttf */,
+				A13DB29A6A4A468E87B4F408 /* FontAwesome.ttf */,
+				E81350FBF91640A395E4DE0A /* FontAwesome5_Brands.ttf */,
+				E36D58D9D724437DBDD40002 /* FontAwesome5_Regular.ttf */,
+				88341688DE31420DAEE5400F /* FontAwesome5_Solid.ttf */,
+				92BE7215BFCE45A8AD878A47 /* Fontisto.ttf */,
+				870A97F622A742E38DEB1495 /* Foundation.ttf */,
+				D367E9F082D744B89A2D43FF /* Ionicons.ttf */,
+				4041606D92124A0585A48DE9 /* MaterialCommunityIcons.ttf */,
+				455E13AC3A6B4E8EA8E604FD /* MaterialIcons.ttf */,
+				B15A8F5FDDDB4410A6178A1A /* Octicons.ttf */,
+				BDECC12124754A11B06F5ADB /* SimpleLineIcons.ttf */,
+				922134156A5A4560ABC137AC /* Zocial.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +209,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				C8C30EE2B71B0D88E5384E31 /* Pods */,
+				4D2A91E13E784D2DA375829A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -260,6 +336,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				D6D6FAE5443A41E4A04A2CD2 /* SourceSansPro-Black.ttf in Resources */,
+				5865EBFA0F6B4031893717F9 /* SourceSansPro-BlackItalic.ttf in Resources */,
+				400AEE3829EF41F8A41524FC /* SourceSansPro-Bold.ttf in Resources */,
+				47E233A875B34D2CB85A8DFB /* SourceSansPro-BoldItalic.ttf in Resources */,
+				A4E5FBA3B9A04A199B5A7312 /* SourceSansPro-ExtraLight.ttf in Resources */,
+				D9D050890AB24B6E90D411F0 /* SourceSansPro-ExtraLightItalic.ttf in Resources */,
+				773CD4BBA16A4E3AB5553CF5 /* SourceSansPro-Italic.ttf in Resources */,
+				89680754440241F5B5C4D315 /* SourceSansPro-Light.ttf in Resources */,
+				6517A1FDA5AA4348A95858C5 /* SourceSansPro-LightItalic.ttf in Resources */,
+				6A634091089B4E1DA1230BA8 /* SourceSansPro-Regular.ttf in Resources */,
+				4237685538504E5DA5CAF277 /* SourceSansPro-SemiBold.ttf in Resources */,
+				01F0AAA5FF444A91BBBEA1BE /* SourceSansPro-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,11 +613,7 @@
 				);
 				INFOPLIST_FILE = MagentoReactNativeCommunityTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -549,11 +633,7 @@
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = MagentoReactNativeCommunityTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -574,10 +654,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MagentoReactNativeCommunity/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -599,10 +676,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = MagentoReactNativeCommunity/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -664,10 +738,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/lib/swift,
-					"$(inherited)",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
@@ -721,10 +792,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/lib/swift,
-					"$(inherited)",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",

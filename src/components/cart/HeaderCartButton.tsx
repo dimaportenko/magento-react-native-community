@@ -4,7 +4,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native-ui-lib';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import { TouchableScale } from '../common/TouchableScale';
 import * as routes from '../../navigation/routes';
 
@@ -22,7 +22,7 @@ export const HeaderCartButton = (props: HeaderCartButtonProps) => {
   return (
     <TouchableScale onPress={onPress} scaleTo={0.93}>
       <View paddingH-15>
-        <Icon name="cart" color="black" size={20} />
+        <Icon name="cart" color="black" size={24} />
       </View>
     </TouchableScale>
   );

@@ -5,6 +5,7 @@
 import * as React from 'react';
 import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import { CategoriesScreen } from '../components/categories/CategoriesScreen';
 import * as routes from './routes';
 import { ProductListScreen } from '../components/products/ProductListScreen';
@@ -12,6 +13,7 @@ import { ProductDetailsScreen } from '../components/products/ProductDetailsScree
 import { useCart } from '../logic/cart/useCart';
 import { HeaderCartButton } from '../components/cart/HeaderCartButton';
 import { CartDetailsScreen } from '../components/cart/CartDetailsScreen';
+import { fonts } from '../theme/fonts';
 
 export type RootStackParamList = {
   [routes.NAVIGATION_CATEGORIES_ROUTE]: {
@@ -67,6 +69,12 @@ const RootStack = () => {
         headerBackTitleVisible: false,
         headerTintColor: 'black',
         headerRight: () => <HeaderCartButton />,
+        headerTitleStyle: {
+          fontFamily: fonts.SourceSansProLight,
+          fontSize: 24,
+          fontWeight: '300',
+        },
+        headerBackImage: () => <Icon name="chevron-left" size={48} />
       })}>
       <Stack.Screen
         name={routes.NAVIGATION_CATEGORIES_ROUTE}
