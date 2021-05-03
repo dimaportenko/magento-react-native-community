@@ -7,7 +7,7 @@ import { useCartDetails } from '../../logic/cart/useCartDetails';
 import { ActivityIndicator, FlatList, Image, ListRenderItem } from 'react-native';
 import { CartDetailItemType } from '../../apollo/queries/cartItemsFragment';
 import { TouchableScale } from '../common/TouchableScale';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AnimatedAppearance } from '../common/AnimatedAppearance';
 
@@ -72,7 +72,7 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
                   {removeItemLoading && removeItemUid === item.uid ? (
                     <ActivityIndicator size="small" />
                   ) : (
-                    <Icon name="trash" color="black" size={20} />
+                    <Icon name="trash" color="black" size={32} />
                   )}
                 </View>
               </TouchableScale>
