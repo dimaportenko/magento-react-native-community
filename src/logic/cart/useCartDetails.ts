@@ -39,6 +39,7 @@ export const useCartDetails = (): Result => {
 
   const [getCartDetails, responseObject] = useLazyQuery<GetCartDetailsResponse>(GET_CART_DETAILS, {
     variables: { cartId },
+    fetchPolicy: 'cache-and-network',
   });
 
   const [removeItemFromCart, { loading: removeItemLoading }] = useMutation<

@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native-ui-lib';
 import { useCartDetails } from '../../logic/cart/useCartDetails';
-import { ActivityIndicator, FlatList, Image, ListRenderItem } from 'react-native';
+import { ActivityIndicator, FlatList, Image, ListRenderItem, RefreshControl } from 'react-native';
 import { CartDetailItemType } from '../../apollo/queries/cartItemsFragment';
 import { TouchableScale } from '../common/TouchableScale';
 import Icon from 'react-native-vector-icons/EvilIcons';
@@ -29,18 +29,6 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
   useEffect(() => {
     getCartDetails();
   }, []);
-
-  useEffect(() => {
-    console.log({ cartItems });
-  }, [cartItems]);
-
-  if (loading) {
-    return (
-      <View flex center>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
 
   const onRemoveCartItemPress = (item: CartDetailItemType) => {
     setRemoveItemUid(item.uid);
@@ -94,6 +82,7 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
         renderItem={renderCartItem}
         keyExtractor={item => item.product.sku}
         showsVerticalScrollIndicator={false}
+        refreshControl={<RefreshControl refreshing={loading} onRefresh={getCartDetails} />}
       />
       {!!totals && (
         <View bg-white style={{ paddingBottom: insets.bottom }}>
