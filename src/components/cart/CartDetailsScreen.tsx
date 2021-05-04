@@ -10,6 +10,7 @@ import { TouchableScale } from '../common/TouchableScale';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AnimatedAppearance } from '../common/AnimatedAppearance';
+import { getPriceString } from '../../logic/util/price';
 
 interface CartDetailsScreenProps {}
 
@@ -62,7 +63,7 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
 
             <View paddingH-10 paddingV-5 spread flex>
               <Text>{item.product.name}</Text>
-              <Text>{`${item.prices.price.value} ${item.prices.price.currency}`}</Text>
+              <Text>{getPriceString(item.prices.price)}</Text>
               <Text>{`qty: ${item.quantity}`}</Text>
             </View>
 
@@ -98,7 +99,7 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
         <View bg-white style={{ paddingBottom: insets.bottom }}>
           <Text
             text70R
-            margin-10>{`Totals: ${totals?.grand_total.value} ${totals?.grand_total.currency}`}</Text>
+            margin-10>{`Totals: ${getPriceString(totals?.grand_total)}`}</Text>
         </View>
       )}
     </View>
