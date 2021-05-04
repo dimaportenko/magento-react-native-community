@@ -4,11 +4,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native-ui-lib';
 import { useCartDetails } from '../../logic/cart/useCartDetails';
-import { FlatList, ListRenderItem, RefreshControl } from 'react-native';
+import { ActivityIndicator, FlatList, ListRenderItem, RefreshControl } from 'react-native';
 import { CartDetailItemType } from '../../apollo/queries/cartItemsFragment';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getPriceString } from '../../logic/util/price';
 import { CartDetailsListItem } from './CartDetailsListItem';
+import Icon from 'react-native-vector-icons/EvilIcons';
+import TouchableRipple from '../common/TouchableRipple';
 
 interface CartDetailsScreenProps {}
 
@@ -55,11 +57,24 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
         showsVerticalScrollIndicator={false}
         refreshControl={<RefreshControl refreshing={loading} onRefresh={getCartDetails} />}
       />
-      {!!totals && (
-        <View bg-white style={{ paddingBottom: insets.bottom }}>
+      <View bg-white style={{ paddingBottom: insets.bottom }}>
+        {!!totals && (
           <Text text70R margin-10>{`Totals: ${getPriceString(totals?.grand_total)}`}</Text>
-        </View>
-      )}
+        )}
+        <TouchableRipple
+          enabled={!loading}
+          color="black"
+          rippleColor="rgba(255, 255, 255, 0.2)"
+          onPress={() => {}}>
+          <View height={50} width="100%" absB bg-black center>
+            <View row flex center>
+              <Text white marginH-7>
+                Checkout
+              </Text>
+            </View>
+          </View>
+        </TouchableRipple>
+      </View>
     </View>
   );
 };
