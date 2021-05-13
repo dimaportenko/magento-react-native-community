@@ -14,6 +14,7 @@ import { useCart } from '../logic/cart/useCart';
 import { HeaderCartButton } from '../components/cart/HeaderCartButton';
 import { CartDetailsScreen } from '../components/cart/CartDetailsScreen';
 import { fonts } from '../theme/fonts';
+import { CheckoutScreen } from '../components/checkout/CheckoutScreen';
 
 export type RootStackParamList = {
   [routes.NAVIGATION_CATEGORIES_ROUTE]: {
@@ -31,6 +32,11 @@ export type RootStackParamList = {
   [routes.NAVIGATION_CART_DETAILS_ROUTE]: {
     title: string;
   };
+  [routes.NAVIGATION_CHECKOUT_ROUTE]:
+    | {
+        title: string;
+      }
+    | undefined;
 };
 
 export type CategoriesScreenNavigationProp = StackNavigationProp<
@@ -58,6 +64,11 @@ export type ProductDetailsScreenRouteProp = RouteProp<
   typeof routes.NAVIGATION_PRODUCT_DETAILS_ROUTE
 >;
 
+export type CartDetailsScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  typeof routes.NAVIGATION_CART_DETAILS_ROUTE
+>;
+
 const Stack = createStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
@@ -74,7 +85,7 @@ const RootStack = () => {
           fontSize: 24,
           fontWeight: '300',
         },
-        headerBackImage: () => <Icon name="chevron-left" size={48} />
+        headerBackImage: () => <Icon name="chevron-left" size={48} />,
       })}>
       <Stack.Screen
         name={routes.NAVIGATION_CATEGORIES_ROUTE}
@@ -102,6 +113,14 @@ const RootStack = () => {
         component={CartDetailsScreen}
         options={({ navigation, route }) => ({
           title: 'Cart Details',
+          headerRight: undefined,
+        })}
+      />
+      <Stack.Screen
+        name={routes.NAVIGATION_CHECKOUT_ROUTE}
+        component={CheckoutScreen}
+        options={({ navigation, route }) => ({
+          title: 'Checkout',
           headerRight: undefined,
         })}
       />

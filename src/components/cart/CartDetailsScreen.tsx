@@ -9,12 +9,15 @@ import { CartDetailItemType } from '../../apollo/queries/cartItemsFragment';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getPriceString } from '../../logic/util/price';
 import { CartDetailsListItem } from './CartDetailsListItem';
-import Icon from 'react-native-vector-icons/EvilIcons';
 import TouchableRipple from '../common/TouchableRipple';
+import { CartDetailsScreenNavigationProp } from '../../navigation/Navigation';
+import * as routes from '../../navigation/routes';
 
-interface CartDetailsScreenProps {}
+interface CartDetailsScreenProps {
+  navigation: CartDetailsScreenNavigationProp;
+}
 
-export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
+export const CartDetailsScreen = ({ navigation }: CartDetailsScreenProps) => {
   const [removeItemUid, setRemoveItemUid] = useState('');
   const {
     getCartDetails,
@@ -65,7 +68,9 @@ export const CartDetailsScreen = (props: CartDetailsScreenProps) => {
           enabled={!loading}
           color="black"
           rippleColor="rgba(255, 255, 255, 0.2)"
-          onPress={() => {}}>
+          onPress={() => {
+            navigation.navigate(routes.NAVIGATION_CHECKOUT_ROUTE);
+          }}>
           <View height={50} width="100%" absB bg-black center>
             <View row flex center>
               <Text white marginH-7>
